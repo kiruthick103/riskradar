@@ -108,8 +108,6 @@ class ReportRepository:
         else:
             # Fallback: seed from bundled demo_cases.json (works on Render / any env without PDFs)
             self._seed_from_demo_json(backend_root)
-        
-        self.load_from_db()
 
     def _seed_from_demo_json(self, backend_root: str):
         """Seeds the repository from data/demo_cases.json when PDFs are not available."""
@@ -124,6 +122,31 @@ class ReportRepository:
                 cases = json.load(f)
 
             for case in cases:
+                # Handle potential list or string values
+                h_val = case.get("hazard", "")
+                hazard = h_val[0] if isinstance(h_val, list) and h_val else str(h_val)
+
+                b_val = case.get("barrier", "")
+                barrier = b_val[0] if isinstance(b_val, list) and b_val else str(b_val)
+
+                lsr_val = case.get("life_saving_rule")
+                if isinstance(lsr_val, list):
+                    lsr_list = [str(x) for x in lsr_val]
+                elif lsr_val:
+                    lsr_list = [str(lsr_val)]
+                else:
+                    lsr_list = []
+
+                rule_mappings = [
+                    {
+                        "life_saving_rule": r,
+                        "rule_display_name": r.replace("_", " ").title(),
+                        "is_process_safety_fundamental": bool(case.get("process_safety_relevant", False)),
+                        "confidence": float(case.get("confidence", 0.85))
+                    }
+                    for r in lsr_list if r
+                ]
+
                 record = {
                     "report_id": case.get("report_id") or f"OIL-{uuid.uuid4().hex[:8].upper()}",
                     "external_ref": case.get("external_ref", ""),
@@ -137,14 +160,14 @@ class ReportRepository:
                     "contractor_involved": bool(case.get("contractor_involved", False)),
                     "difficulty_category": case.get("difficulty_category", "demo"),
                     "extraction": {
-                        "hazard": case.get("hazard", ""),
+                        "hazard": hazard,
                         "energy_type": case.get("energy_type", ""),
                         "energy_level": case.get("energy_level", ""),
                         "exposure_present": case.get("exposure_present", False),
                         "exposure_description": case.get("exposure_description", ""),
                         "proximity": case.get("proximity", ""),
                         "activity_criticality": case.get("activity_criticality", ""),
-                        "barrier": case.get("barrier", ""),
+                        "barrier": barrier,
                         "barrier_failure_type": case.get("barrier_failure_type", ""),
                         "potential_consequence": case.get("potential_consequence", ""),
                         "evidence_sentence": case.get("evidence_sentence", ""),
@@ -159,12 +182,7 @@ class ReportRepository:
                         "process_safety_relevant": bool(case.get("process_safety_relevant", False)),
                         "reasons": [case.get("evidence_sentence", "")] if case.get("evidence_sentence") else []
                     },
-                    "rule_mappings": [{
-                        "life_saving_rule": case.get("life_saving_rule", ""),
-                        "rule_display_name": case.get("life_saving_rule", "").replace("_", " ").title(),
-                        "is_process_safety_fundamental": bool(case.get("process_safety_relevant", False)),
-                        "confidence": float(case.get("confidence", 0.85))
-                    }] if case.get("life_saving_rule") else [],
+                    "rule_mappings": rule_mappings,
                     "precursor_chain": {},
                     "embedding": [],
                     "extracted_images": [],
