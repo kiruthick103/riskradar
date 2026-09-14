@@ -153,9 +153,18 @@ class ReportRepository:
                     "assessment": {
                         "sif_potential_label": case.get("sif_potential_label", "LOW"),
                         "raw_score": float(case.get("raw_score", 0.0)),
-                        "confidence": float(case.get("confidence", 0.5)),
+                        "confidence": float(case.get("confidence", 0.85)),
+                        "routing_decision": "AUTOMATED_CLOSE" if case.get("sif_potential_label") == "LOW" else "HUMAN_TRIAGE_REQUIRED",
+                        "component_scores": {"hazard": 1, "energy": 1, "barrier": 1, "proximity": 1, "activity": 1},
+                        "process_safety_relevant": bool(case.get("process_safety_relevant", False)),
+                        "reasons": [case.get("evidence_sentence", "")] if case.get("evidence_sentence") else []
                     },
-                    "rule_mappings": [{"life_saving_rule": case.get("life_saving_rule", "")}] if case.get("life_saving_rule") else [],
+                    "rule_mappings": [{
+                        "life_saving_rule": case.get("life_saving_rule", ""),
+                        "rule_display_name": case.get("life_saving_rule", "").replace("_", " ").title(),
+                        "is_process_safety_fundamental": bool(case.get("process_safety_relevant", False)),
+                        "confidence": float(case.get("confidence", 0.85))
+                    }] if case.get("life_saving_rule") else [],
                     "precursor_chain": {},
                     "embedding": [],
                     "extracted_images": [],

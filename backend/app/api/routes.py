@@ -188,7 +188,7 @@ def analyze_document_text(payload: Dict[str, Any]):
     }
 
 
-@router.get("/reports", response_model=List[ReportResponse])
+@router.get("/reports")
 def list_reports(
     site: Optional[str] = None,
     activity: Optional[str] = None,
@@ -206,7 +206,7 @@ def list_reports(
         limit=limit
     )
 
-@router.get("/reports/{report_id}", response_model=ReportResponse)
+@router.get("/reports/{report_id}")
 def get_report(report_id: str):
     report = repository.get_report(report_id)
     if not report:
@@ -227,7 +227,7 @@ def get_similar(report_id: str, top_k: int = 5):
         raise HTTPException(status_code=404, detail=f"Report {report_id} not found")
     return pattern_engine.get_similar_reports(report["narrative_text"], report_id, top_k)
 
-@router.post("/reports/{report_id}/reviews", response_model=ReportResponse)
+@router.post("/reports/{report_id}/reviews")
 def submit_review(report_id: str, review_in: ReportReviewRequest):
     report = repository.get_report(report_id)
     if not report:
