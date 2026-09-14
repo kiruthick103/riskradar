@@ -24,12 +24,15 @@ import { Screen11_InvestigationRCA } from "./screens/Screen11_InvestigationRCA";
 
 import { fetchReports, createReport, submitReportReview } from "./api/client";
 import { buildLocalPrecursorChain } from "./data/seedReports";
+import fallbackReportsData from "./data/fallbackReports.json";
 import { FileText, ShieldCheck, Sparkles } from "lucide-react";
 
+const initialReports: ReportItem[] = fallbackReportsData as unknown as ReportItem[];
+
 export function App() {
-  const [reports, setReports] = useState<ReportItem[]>([]);
+  const [reports, setReports] = useState<ReportItem[]>(initialReports);
   const [activeScreen, setActiveScreen] = useState<number>(1);
-  const [selectedReport, setSelectedReport] = useState<ReportItem | null>(null);
+  const [selectedReport, setSelectedReport] = useState<ReportItem | null>(initialReports[0] || null);
 
   // Filters
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,19 +48,28 @@ export function App() {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [isRCAModalOpen, setIsRCAModalOpen] = useState(false);
 
-  // Initialize dataset
+  // Initialize dataset & keep synced with live backend
   useEffect(() => {
+    let isMounted = true;
+
     async function loadData() {
-      const serverReports = await fetchReports();
-      if (serverReports && serverReports.length > 0) {
-        setReports(serverReports);
-        setSelectedReport(serverReports[0]);
-      } else {
-        setReports([]);
-        setSelectedReport(null);
+      try {
+        const serverReports = await fetchReports();
+        if (isMounted && serverReports && serverReports.length > 0) {
+          setReports(serverReports);
+          setSelectedReport((prev) => prev || serverReports[0]);
+        }
+      } catch (err) {
+        console.warn("Could not sync with backend:", err);
       }
     }
+
     loadData();
+    const interval = setInterval(loadData, 8000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
   }, []);
 
   // Filtered reports for priority queue & searches

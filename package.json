@@ -1,0 +1,9 @@
+{
+  "name": "riskradar",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build",
+    "dev": "npm --prefix frontend run dev"
+  }
+}

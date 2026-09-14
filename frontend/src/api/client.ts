@@ -1,22 +1,27 @@
 import { ReportItem, PrecursorChain, ExecutiveOverviewData, SiteDensityItem, ActivityDensityItem, BarrierFailureItem, AnomalyAlert } from "../types";
+import fallbackReportsData from "../data/fallbackReports.json";
 
+const fallbackReports: ReportItem[] = fallbackReportsData as unknown as ReportItem[];
 const API_BASE = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
 
 export async function fetchReports(): Promise<ReportItem[]> {
   try {
-    const res = await fetch(`${API_BASE}/reports`);
+    const res = await fetch(`${API_BASE}/reports`, { signal: AbortSignal.timeout(8000) });
     if (res.ok) {
-      return await res.json();
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        return data;
+      }
     }
   } catch (err) {
     console.warn("Backend API not reachable, using embedded client database", err);
   }
-  return [];
+  return fallbackReports;
 }
 
 export async function fetchExecutiveOverview(): Promise<ExecutiveOverviewData | null> {
   try {
-    const res = await fetch(`${API_BASE}/dashboard/executive-overview`);
+    const res = await fetch(`${API_BASE}/dashboard/executive-overview`, { signal: AbortSignal.timeout(8000) });
     if (res.ok) {
       return await res.json();
     }
@@ -28,26 +33,29 @@ export async function fetchExecutiveOverview(): Promise<ExecutiveOverviewData | 
 
 export async function fetchPriorityQueue(): Promise<ReportItem[]> {
   try {
-    const res = await fetch(`${API_BASE}/dashboard/priority-queue`);
+    const res = await fetch(`${API_BASE}/dashboard/priority-queue`, { signal: AbortSignal.timeout(8000) });
     if (res.ok) {
-      return await res.json();
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        return data;
+      }
     }
   } catch (err) {
     console.warn("Backend API not reachable for priority queue", err);
   }
-  return [];
+  return fallbackReports;
 }
 
 export async function fetchReportById(reportId: string): Promise<ReportItem | null> {
   try {
-    const res = await fetch(`${API_BASE}/reports/${reportId}`);
+    const res = await fetch(`${API_BASE}/reports/${reportId}`, { signal: AbortSignal.timeout(8000) });
     if (res.ok) {
       return await res.json();
     }
   } catch (err) {
     console.warn(`Backend API not reachable for report ${reportId}`, err);
   }
-  return null;
+  return fallbackReports.find((r) => r.report_id === reportId) || null;
 }
 
 export async function fetchReportChain(reportId: string): Promise<PrecursorChain | null> {
