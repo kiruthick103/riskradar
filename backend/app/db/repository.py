@@ -79,6 +79,11 @@ class ReportRepository:
         # Resolve project root and candidate Dataset_reports directories
         current_file = os.path.abspath(__file__)
         backend_root = os.path.dirname(os.path.dirname(os.path.dirname(current_file)))
+        # Priority 1: Seed from pre-extracted authentic live reports (67 OIL reports)
+        if self._seed_from_live_reports(backend_root):
+            return
+
+        # Priority 2: Ingest from authentic Dataset_reports PDFs if directory present
         candidate_dirs = [
             "Dataset_reports",
             os.path.join(os.path.dirname(backend_root), "Dataset_reports"),
@@ -106,8 +111,27 @@ class ReportRepository:
                         for r in recs:
                             self.save_report(r)
         else:
-            # Fallback: seed from bundled demo_cases.json (works on Render / any env without PDFs)
+            # Priority 3: Fallback to demo_cases.json
             self._seed_from_demo_json(backend_root)
+
+    def _seed_from_live_reports(self, backend_root: str) -> bool:
+        """Seeds full authentic dataset reports from data/live_local_reports.json."""
+        import os, json
+        live_path = os.path.join(backend_root, "data", "live_local_reports.json")
+        if not os.path.exists(live_path):
+            return False
+        try:
+            with open(live_path, "r", encoding="utf-8") as f:
+                records = json.load(f)
+            if not records:
+                return False
+            for r in records:
+                self.save_report(r)
+            logger.info(f"Seeded {len(records)} authentic reports from live_local_reports.json")
+            return True
+        except Exception as e:
+            logger.warning(f"Error seeding from live_local_reports.json: {e}")
+            return False
 
     def _seed_from_demo_json(self, backend_root: str):
         """Seeds the repository from data/demo_cases.json when PDFs are not available."""

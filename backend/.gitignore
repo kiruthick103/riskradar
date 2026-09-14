@@ -25,7 +25,7 @@ htmlcov/
 .venv
 venv/
 ENV/
-*.db
+!riskradar.db
 !data/
 *.log
 .DS_Store

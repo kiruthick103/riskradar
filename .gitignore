@@ -22,7 +22,7 @@ ENV/
 backend/.pytest_cache/
 .coverage
 htmlcov/
-backend/*.db
+!backend/riskradar.db
 
 # Logs
 *.log
