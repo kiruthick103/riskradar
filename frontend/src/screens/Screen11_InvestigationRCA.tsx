@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ReportItem } from "../types";
 import {
   FileCheck2,
@@ -6,7 +6,9 @@ import {
   Layers,
   Wrench,
   Users,
-  Wind
+  Wind,
+  ShieldAlert,
+  CheckCircle2
 } from "lucide-react";
 
 interface Screen11Props {
@@ -18,11 +20,62 @@ export const Screen11_InvestigationRCA: React.FC<Screen11Props> = ({
   report,
   onOpenExportModal
 }) => {
-  const [why1, setWhy1] = useState("Hazardous energy remained uncontrolled during active task intervention.");
-  const [why2, setWhy2] = useState(`Safety barrier '${report.extraction?.barriers[0]?.display_name || "Positive Isolation"}' was in an '${report.extraction?.barriers[0]?.barrier_status || "UNVERIFIED"}' state.`);
-  const [why3, setWhy3] = useState("Pre-task positive verification test or physical pressure gauge verification was skipped.");
-  const [why4, setWhy4] = useState("Crew was behind turnaround schedule or lacked clear independent verification checklist hold-points.");
-  const [why5, setWhy5] = useState("Procedural drift and absence of mandatory dual-signoff on energy barrier certificates.");
+  const [why1, setWhy1] = useState("");
+  const [why2, setWhy2] = useState("");
+  const [why3, setWhy3] = useState("");
+  const [why4, setWhy4] = useState("");
+  const [why5, setWhy5] = useState("");
+
+  const [engAction, setEngAction] = useState("");
+  const [adminAction, setAdminAction] = useState("");
+  const [toolboxAction, setToolboxAction] = useState("");
+
+  const barrierName = report?.extraction?.barriers?.[0]?.display_name || report?.extraction?.barriers?.[0]?.canonical_barrier || "Safety Barrier";
+  const barrierState = report?.extraction?.barriers?.[0]?.barrier_status || "UNVERIFIED";
+  const hazardName = report?.extraction?.hazards?.[0]?.display_name || report?.extraction?.hazards?.[0]?.canonical_hazard || "hazardous energy";
+  const energyType = report?.extraction?.energy_type || "operational energy";
+  const consequence = report?.extraction?.potential_consequence || "potential serious injury or fatality";
+  const lsrName = report?.rule_mappings?.[0]?.rule_display_name || "IOGP Life-Saving Rule";
+  const exposureDesc = report?.extraction?.exposure?.description;
+
+  useEffect(() => {
+    if (!report) return;
+
+    setWhy1(`Direct physical hazard: ${hazardName} was active with potential for ${consequence}.`);
+    setWhy2(`Primary safety barrier '${barrierName}' was in an '${barrierState}' state, failing to contain ${energyType} energy.`);
+    setWhy3(`Pre-task positive verification test or physical barrier integrity validation for ${energyType} was incomplete: ${exposureDesc || "personnel were within proximity without positive isolation confirmation"}.`);
+    setWhy4(`Work authorization or task-level verification checklist for ${(report.activity || "site work").replace(/_/g, " ")} missed mandatory hold-point before operations.`);
+    setWhy5(`Systemic procedural drift, latent degradation in ${lsrName} safeguard verification, and absence of secondary barrier cross-verification.`);
+
+    setEngAction(`Mandate engineered positive isolation lockout and calibrated sensor verification for ${barrierName}.`);
+    setAdminAction(`Revise PTW checklist to include mandatory dual-signoff hold-point for all ${lsrName} critical tasks.`);
+    setToolboxAction(`Conduct immediate stand-down & toolbox talk across ${report.site || "all facilities"} on ${lsrName} precursor recognition.`);
+  }, [report?.report_id]);
+
+  // Derived Ishikawa Fishbone Items based on real report extraction
+  const ishikawaPeople = [
+    report.contractor_involved ? "Contractor competency & orientation verification gap" : "Internal crew shift turnover & workload pacing",
+    `Familiarity drift regarding ${lsrName} non-negotiables`,
+    "Assumed barrier status without independent verification"
+  ];
+
+  const ishikawaEquipment = [
+    `${barrierName} physical condition: marked as ${barrierState}`,
+    `${energyType.toUpperCase()} containment hardware & isolation points`,
+    "Lockout/tagout device fitment and testing apparatus"
+  ];
+
+  const ishikawaProcess = [
+    `PTW certificate and ${lsrName} requirement alignment`,
+    "Pre-task safety meeting (TBT) hazard identification depth",
+    "Line-of-fire barricade and exclusion zone enforcement"
+  ];
+
+  const ishikawaEnvironment = [
+    `Facility operational footprint at ${report.site || "field location"}`,
+    "Ambient noise, lighting, and weather exposure during task execution",
+    "Simultaneous operations (SIMOPS) congestion and distraction"
+  ];
 
   return (
     <div className="space-y-8 animate-fadeIn">
@@ -59,8 +112,8 @@ export const Screen11_InvestigationRCA: React.FC<Screen11Props> = ({
           <p className="text-sm text-slate-800 italic mt-1 m-0 font-medium leading-relaxed">"{report.narrative_text}"</p>
         </div>
         <div className="text-right shrink-0 space-y-1">
-          <span className="text-sm font-extrabold text-rose-700 font-mono block">{report.assessment.sif_potential_label} SIF POTENTIAL</span>
-          <span className="text-xs text-indigo-800 font-bold bg-indigo-50 px-2.5 py-1 rounded border border-indigo-200 block">IOGP: {report.rule_mappings[0]?.rule_display_name || "PSF"}</span>
+          <span className="text-sm font-extrabold text-rose-700 font-mono block">{report.assessment?.sif_potential_label} SIF POTENTIAL</span>
+          <span className="text-xs text-indigo-800 font-bold bg-indigo-50 px-2.5 py-1 rounded border border-indigo-200 block">IOGP: {report.rule_mappings?.[0]?.rule_display_name || "PSF"}</span>
         </div>
       </div>
 
@@ -145,9 +198,9 @@ export const Screen11_InvestigationRCA: React.FC<Screen11Props> = ({
               <span>People & Competency</span>
             </div>
             <ul className="space-y-2 text-slate-700 pl-4 list-disc m-0 text-xs font-medium">
-              <li>Turnaround time pressure</li>
-              <li>Contractor orientation gap</li>
-              <li>Assumed isolation complete</li>
+              {ishikawaPeople.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
             </ul>
           </div>
 
@@ -158,9 +211,9 @@ export const Screen11_InvestigationRCA: React.FC<Screen11Props> = ({
               <span>Equipment & Hardware</span>
             </div>
             <ul className="space-y-2 text-slate-700 pl-4 list-disc m-0 text-xs font-medium">
-              <li>Bleed-off valve needle stuck</li>
-              <li>Pressure gauge calibration</li>
-              <li>LOTO hardware lockout fit</li>
+              {ishikawaEquipment.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
             </ul>
           </div>
 
@@ -171,9 +224,9 @@ export const Screen11_InvestigationRCA: React.FC<Screen11Props> = ({
               <span>Process & Procedures</span>
             </div>
             <ul className="space-y-2 text-slate-700 pl-4 list-disc m-0 text-xs font-medium">
-              <li>PTW isolation cert mismatch</li>
-              <li>Pre-task hold point absent</li>
-              <li>JSA line-of-fire review</li>
+              {ishikawaProcess.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
             </ul>
           </div>
 
@@ -184,10 +237,69 @@ export const Screen11_InvestigationRCA: React.FC<Screen11Props> = ({
               <span>Work Environment</span>
             </div>
             <ul className="space-y-2 text-slate-700 pl-4 list-disc m-0 text-xs font-medium">
-              <li>Night shift lighting</li>
-              <li>Hydrocarbon vapor dispersion</li>
-              <li>SIMOPS noise distraction</li>
+              {ishikawaEnvironment.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
             </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Recommended Actions: Hierarchy of Controls */}
+      <div className="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm space-y-5">
+        <div className="flex items-center justify-between border-b border-slate-200 pb-3.5">
+          <div className="flex items-center gap-2.5">
+            <span className="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-mono font-extrabold text-xs">
+              Actions
+            </span>
+            <h3 className="text-base font-bold text-slate-900 m-0">
+              AI-Drafted Recommended Actions (Hierarchy of Controls)
+            </h3>
+          </div>
+          <span className="text-xs text-slate-500 italic font-medium">Human-editable HSE action plan</span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+          {/* Engineering Control */}
+          <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-xs uppercase tracking-wider">
+              <ShieldAlert className="w-4 h-4 text-indigo-600" />
+              <span>Engineering Control</span>
+            </div>
+            <textarea
+              rows={3}
+              value={engAction}
+              onChange={(e) => setEngAction(e.target.value)}
+              className="w-full bg-white border border-slate-300 rounded-xl p-3 text-slate-800 text-xs font-medium focus:ring-2 focus:ring-indigo-500 transition shadow-2xs resize-none"
+            />
+          </div>
+
+          {/* Administrative Control */}
+          <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <div className="flex items-center gap-2 text-amber-900 font-extrabold text-xs uppercase tracking-wider">
+              <Layers className="w-4 h-4 text-amber-600" />
+              <span>Administrative Control</span>
+            </div>
+            <textarea
+              rows={3}
+              value={adminAction}
+              onChange={(e) => setAdminAction(e.target.value)}
+              className="w-full bg-white border border-slate-300 rounded-xl p-3 text-slate-800 text-xs font-medium focus:ring-2 focus:ring-amber-500 transition shadow-2xs resize-none"
+            />
+          </div>
+
+          {/* Toolbox Talk / Awareness */}
+          <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <div className="flex items-center gap-2 text-emerald-900 font-extrabold text-xs uppercase tracking-wider">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <span>Toolbox Talk Topic</span>
+            </div>
+            <textarea
+              rows={3}
+              value={toolboxAction}
+              onChange={(e) => setToolboxAction(e.target.value)}
+              className="w-full bg-white border border-slate-300 rounded-xl p-3 text-slate-800 text-xs font-medium focus:ring-2 focus:ring-emerald-500 transition shadow-2xs resize-none"
+            />
           </div>
         </div>
       </div>

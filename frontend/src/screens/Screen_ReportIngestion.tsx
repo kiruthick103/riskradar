@@ -1,3 +1,37 @@
+
+const SHOWCASE_DEMOS = [
+  {
+    title: "Showcase 1: Hidden-SIF (No Injury, Stored Pressure)",
+    badge: "Hidden-SIF Precursor",
+    badgeColor: "bg-red-500/10 text-red-700 border-red-300",
+    narrative: "During scheduled maintenance on a hydrocarbon transfer line, work began after the upstream valve was closed. Positive isolation was not verified with a pressure test before flange breaking commenced. Residual pressure was present in the line. The worker positioned near the flange noticed a slight release and immediately stepped back. Work was stopped and the line was re-isolated and verified before continuing. No injury occurred.",
+    site: "Field Site 4 - Duliajan Central",
+    activity: "mechanical_electrical_maintenance",
+    reportType: "NEAR_MISS" as const,
+    takeaway: "Actual Severity: NONE. RiskRadar catches high energy + unverified barrier -> HIGH SIF."
+  },
+  {
+    title: "Showcase 2: False Alarm (Pipe Wrench Finger Pinch)",
+    badge: "Minor Injury / False Alarm",
+    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-300",
+    narrative: "Technician was putting away a 24-inch pipe wrench into the field tool chest after routine shift patrol. The chest lid slipped from grip and pinched worker's index fingertip. First aid antiseptic and adhesive bandage applied on site. No broken skin, zero stored mechanical or hydraulic pressure, tools grounded. Worker resumed normal duties immediately.",
+    site: "Moran Oilfield Well #84",
+    activity: "routine_inspection_patrol",
+    reportType: "UA" as const,
+    takeaway: "Keyword search flags 'injury', but NLP recognizes zero fatal potential -> LOW SIF."
+  },
+  {
+    title: "Showcase 3: Ambiguous Case (Contradictory Tag & Permit)",
+    badge: "Ambiguous / Conflicting",
+    badgeColor: "bg-amber-500/10 text-amber-700 border-amber-300",
+    narrative: "Scaffolding tag indicated green inspection status on morning board. However, field mechanic noted mid-rail guard clamp was loose and toe-board was unclipped near east corner at 6m elevation. Supervisor stated permit was authorized while safety officer noted pre-job review was still pending signature. Work was halted before personnel climbed.",
+    site: "Naharkatiya OCS Central",
+    activity: "working_at_height",
+    reportType: "UC" as const,
+    takeaway: "Conflicting evidence between tags and physical state -> Routes to Human HSE Review."
+  }
+];
+
 import { useLanguage } from "../context/LanguageContext";
 import React, { useState, useRef } from "react";
 import {
@@ -59,6 +93,23 @@ export const Screen_ReportIngestion: React.FC<ScreenReportIngestionProps> = ({
   const [isDragOver, setIsDragOver] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [previewModalImage, setPreviewModalImage] = useState<string | null>(null);
+
+  
+  const handleLoadShowcase = (demo: typeof SHOWCASE_DEMOS[0]) => {
+    const demoItem: QueuedFileItem = {
+      id: `SHOWCASE-${Date.now()}`,
+      file: new File(["demo"], `${demo.title}.txt`, { type: "text/plain" }),
+      status: "ready",
+      narrativeText: demo.narrative,
+      site: demo.site,
+      activity: demo.activity,
+      reportType: demo.reportType,
+      analysisResult: null
+    };
+    setQueuedFiles([demoItem]);
+    setCurrentIndex(0);
+    setIsConfirmed(true);
+  };
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const addMoreInputRef = useRef<HTMLInputElement>(null);
@@ -334,6 +385,53 @@ export const Screen_ReportIngestion: React.FC<ScreenReportIngestionProps> = ({
             <FileText className="w-3.5 h-3.5 text-blue-600" />
             <span>{t("ingest.pipeline_badge")}</span>
           </span>
+        </div>
+      </div>
+
+      
+      {/* 3 SHOWCASE REPORT DEMO LAUNCHER */}
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-sm space-y-3 text-slate-100">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <span className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30">
+              <Sparkles className="w-4 h-4" />
+            </span>
+            <span className="font-extrabold text-sm text-white tracking-tight">
+              1-Click Showcase Demo Cases (SIH 2026 Evaluation)
+            </span>
+          </div>
+          <span className="text-[11px] font-semibold text-slate-400">
+            Click any case to test the Hybrid AI Pipeline instantly
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+          {SHOWCASE_DEMOS.map((d, i) => (
+            <div
+              key={i}
+              onClick={() => handleLoadShowcase(d)}
+              className="p-4 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/70 hover:border-cyan-500/50 transition cursor-pointer flex flex-col justify-between space-y-2.5 group"
+            >
+              <div className="flex items-center justify-between gap-1">
+                <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold border ${d.badgeColor}`}>
+                  {d.badge}
+                </span>
+                <span className="text-[10px] text-slate-400 font-mono">Demo #{i + 1}</span>
+              </div>
+              <h4 className="text-xs font-bold text-white group-hover:text-cyan-300 transition line-clamp-2">
+                {d.title}
+              </h4>
+              <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed">
+                {d.narrative}
+              </p>
+              <div className="pt-2 border-t border-slate-700/60 flex items-center justify-between text-[10px]">
+                <span className="text-slate-400 truncate max-w-[170px]">{d.takeaway}</span>
+                <span className="text-cyan-400 font-bold group-hover:translate-x-0.5 transition flex items-center gap-0.5">
+                  Test ?
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

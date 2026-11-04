@@ -7,7 +7,7 @@ import {
   SiteTelemetryResponse,
   SiteTelemetrySummaryItem
 } from "../types";
-import { fetchSiteTelemetry, fetchTelemetrySitesSummary, fetchSyntheticDemoTelemetry } from "../api/client";
+import { fetchSiteTelemetry, fetchTelemetrySitesSummary, fetchSyntheticDemoTelemetry, fetchSitesList } from "../api/client";
 import { useLanguage } from "../context/LanguageContext";
 import {
   Radio,
@@ -60,32 +60,40 @@ export const Screen10_SafetyTelemetry: React.FC<Screen10Props> = ({
 }) => {
   const { t, language } = useLanguage();
 
-  const [isDemoMode, setIsDemoMode] = useState<boolean>(true);
-  const [selectedSite, setSelectedSite] = useState<string>("Moran Drilling Rig 7 (Demo Scenario)");
+  const [isDemoMode, setIsDemoMode] = useState<boolean>(false);
+  const [selectedSite, setSelectedSite] = useState<string>("");
   const [selectedActivity, setSelectedActivity] = useState<string>("");
   const [timeRange, setTimeRange] = useState<string>("6M");
   const [telemetryData, setTelemetryData] = useState<SiteTelemetryResponse | null>(null);
   const [sitesSummary, setSitesSummary] = useState<SiteTelemetrySummaryItem[]>([]);
   const [selectedPoint, setSelectedPoint] = useState<TelemetryTimelinePoint | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [availableSites, setAvailableSites] = useState<Array<{ site: string; report_count: number; high_sif_count: number }>>([]);
 
-  // Available Sites for dropdown
-  const availableSites = useMemo(() => {
-    const s = new Set<string>();
-    s.add("Moran Drilling Rig 7 (Demo Scenario)");
-    s.add("Crude Oil Terminal");
-    s.add("Refinery");
-    s.add("NRL Hydrocracker Unit 2");
-    s.add("Duliajan Central");
-    s.add("Moran Oilfield");
-    s.add("Digboi Refinery");
-    reports.forEach((r) => {
-      if (r.site) s.add(r.site.split(" - ")[0]);
+  // Load available sites from API on mount — fully realtime, no hardcoding
+  useEffect(() => {
+    fetchSitesList().then((res) => {
+      if (res && res.sites && res.sites.length > 0) {
+        setAvailableSites(res.sites);
+        // Auto-select first high-risk site
+        const firstHighRisk = res.sites.find((s) => s.high_sif_count > 0);
+        const first = firstHighRisk || res.sites[0];
+        if (first && !selectedSite) {
+          setSelectedSite(first.site);
+        } else if (!selectedSite && res.sites.length > 0) {
+          setSelectedSite(res.sites[0].site);
+        }
+      } else {
+        // Fallback if backend not yet ready
+        const fallbackSites = Array.from(new Set(reports.map((r) => r.site).filter(Boolean)));
+        setAvailableSites(fallbackSites.map((s) => ({ site: s, report_count: 1, high_sif_count: 0 })));
+        if (!selectedSite && fallbackSites.length > 0) setSelectedSite(fallbackSites[0]);
+      }
     });
-    return Array.from(s);
-  }, [reports]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // Load telemetry data on site change or toggle
+  // Load telemetry data on site change or toggle with periodic live sync
   useEffect(() => {
     let isMounted = true;
     setIsLoading(true);
@@ -118,8 +126,10 @@ export const Screen10_SafetyTelemetry: React.FC<Screen10Props> = ({
     };
 
     loadData();
+    const interval = setInterval(loadData, 8000);
     return () => {
       isMounted = false;
+      clearInterval(interval);
     };
   }, [selectedSite, selectedActivity, isDemoMode]);
 
@@ -179,7 +189,8 @@ export const Screen10_SafetyTelemetry: React.FC<Screen10Props> = ({
             type="button"
             onClick={() => {
               setIsDemoMode(false);
-              setSelectedSite("Crude Oil Terminal");
+              const firstReal = availableSites.find((s) => !s.site.includes("Demo") && !s.site.includes("Rig 7"));
+              if (firstReal) setSelectedSite(firstReal.site);
             }}
             className={`px-3.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer flex items-center gap-1.5 ${
               !isDemoMode
@@ -206,9 +217,10 @@ export const Screen10_SafetyTelemetry: React.FC<Screen10Props> = ({
               onChange={(e) => handleSelectSite(e.target.value)}
               className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-slate-900 cursor-pointer shadow-2xs"
             >
+              <option value="Moran Drilling Rig 7 (Demo Scenario)">🔴 Moran Drilling Rig 7 (Demo Scenario)</option>
               {availableSites.map((s) => (
-                <option key={s} value={s}>
-                  {s}
+                <option key={s.site} value={s.site}>
+                  {s.high_sif_count > 0 ? "⚠ " : ""}{s.site} ({s.report_count} reports)
                 </option>
               ))}
             </select>

@@ -65,7 +65,7 @@ export const Screen7_SiteComparison: React.FC<UnifiedSiteRiskProps> = ({
   );
   const [selectedMatchReport, setSelectedMatchReport] = useState<ReportItem | null>(null);
 
-  // Close modal on Escape key and lock body scroll
+  // Close modal on Escape key and reset body scroll on unmount
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -76,13 +76,20 @@ export const Screen7_SiteComparison: React.FC<UnifiedSiteRiskProps> = ({
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [modalSite]);
+
+  // Always reset on screen unmount to prevent scroll lock on navigation
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   const getFormattedScore = (rawScore?: number): string => {
     if (rawScore === undefined || rawScore === null || rawScore <= 0) return "0.0";
@@ -372,7 +379,7 @@ export const Screen7_SiteComparison: React.FC<UnifiedSiteRiskProps> = ({
             {t("site_comp.kpi_shared", "Cross-Site Shared Precursors")}
           </span>
           <span className="text-2xl font-black text-amber-700 font-mono block">
-            18 <span className="text-xs text-slate-400 font-normal">{language === "hi" ? "पैटर्न समूह" : "Pattern Clusters"}</span>
+            {crossSiteMatches.length} <span className="text-xs text-slate-400 font-normal">{language === "hi" ? "पैटर्न समूह" : "Pattern Clusters"}</span>
           </span>
           <span className="text-xs text-slate-500 font-medium block">
             {t("site_comp.kpi_shared_sub", "Shared Latent Barrier Failure Modes")}
@@ -383,11 +390,11 @@ export const Screen7_SiteComparison: React.FC<UnifiedSiteRiskProps> = ({
           <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
             {t("site_comp.kpi_vulnerability", "Primary Vulnerability")}
           </span>
-          <span className="text-xs font-bold text-slate-900 block mt-1">
-            Energy Isolation Standard
+          <span className="text-xs font-bold text-slate-900 block mt-1 truncate" title={siteList[0]?.primary_vulnerability || "Energy Isolation"}>
+            {siteList[0]?.primary_vulnerability || "Energy Isolation"}
           </span>
           <span className="text-xs text-slate-500 font-mono block">
-            IOGP Report 459 • 42% of Incidents
+            {siteList.length > 0 ? `${Math.round((siteList.filter(s => s.high_sif_count > 0).length / siteList.length) * 100)}% of Sites Affected` : "Computing..."}
           </span>
         </div>
       </div>

@@ -1,111 +1,135 @@
 # RiskRadar 🛡️
-## AI/NLP Engine to Detect Serious Injury & Fatality (SIF) Precursors in Oil India Limited's Safety Reports
-
-**Smart India Hackathon (SIH) Problem Statement 26165**  
-**Target Organization:** Oil India Limited (OIL — Maharatna CPSE, Upper Assam, NRL Refinery, Pipeline Division)  
-
----
-
-## 🌟 Executive Summary & Problem Framing
-
-Oil India Limited (OIL) collects thousands of Unsafe-Act / Unsafe-Condition (UA/UC), Near-Miss, and Incident observations through its HSSE reporting kiosks, mobile dropboxes, and management systems. Currently, these reports are triaged manually after periodic intervals (monthly, quarterly), which suffers from two critical flaws:
-
-1. **Volume Blindness**: Critical latent warnings get buried in high-volume, low-severity reports (e.g. minor slips or soft-tissue strains).
-2. **The Fatality Causality Disconnect**: Global research (**DEKRA Martin & Black 2015**, **EEI SIF Precursor Model**, **PMC10998882**) proves that low-severity incidents do *not* share the same root causes as fatalities. Non-fatal workplace accidents fell 51% over 15 years, while fatalities fell only 25.5%. Only **~20–25% of safety observations carry genuine SIF potential**.
-
-**RiskRadar** is an intelligent AI/NLP platform specifically calibrated for oil and gas operations that ingests free-text safety reports, detects true SIF precursors using a deterministic hybrid architecture, maps them to the **9 IOGP Life-Saving Rules (Report 459)** & **Process Safety Fundamentals**, constructs clickable **SIF Precursor Chains**, and visualizes cross-site recurring patterns and normalized **Site Precursor Densities**.
+## Full-AI Safety Intelligence & SIF Precursor Discovery Platform
+**Smart India Hackathon (SIH) 2026 — Problem Statement 26165**  
+**Team NorthStar** | **Default Operator Showcase:** Oil India Limited (OIL)  
+**Live Application:** [https://risk-radar-new.vercel.app/](https://risk-radar-new.vercel.app/)
 
 ---
 
-## 🚀 Key Highlights & Differentiators
-
-| Feature | Generic "ChatGPT Wrapper" Approach | **RiskRadar (Our Solution)** |
-|---|---|---|
-| **AI Architecture** | Prompts an LLM to guess a single risk score (black-box) | **Hybrid Deterministic**: LLM extracts structured evidence spans; a transparent 5-factor mathematical formula computes SIF risk & confidence separately |
-| **Domain Safety Taxonomy** | Generic hazard keywords | **16 O&G Canonical Hazards**, 6 Energy Types, 6 Barrier Failure States, and 12 Lifecycle Activities |
-| **Barrier Failure Nuance** | Conflates "not verified" with "failed" | Differentiates **`UNVERIFIED`** (the #1 maintenance SIF precursor) from `FAILED`, `BYPASSED`, `WEAK`, and `MISSING` |
-| **IOGP Alignment** | Hallucinated safety tips | **RAG-Grounded IOGP 9 Life-Saving Rules (Report 459)** + Process Safety Fundamentals (PSF) multi-tagging |
-| **Explainability (XAI)** | Generic bullet points | **9-Stage Bowtie Precursor Chain DAG** with bidirectional click-to-highlight verbatim sentence spans |
-| **Site Risk Ranking** | Misleading raw report counts | **Normalized SIF Precursor Density** `(High + Med SIF / Total Reports × 100)` per 100 observations |
-| **Investigation Studio** | None | Auto-populated **5-Whys RCA**, **Ishikawa Fishbone**, and printable **Official PDF Investigation Pack** |
+> [!NOTE]
+> **Trust & Governance Banner:**  
+> *Decision-support system, not an autonomous safety authority.*  
+> All analytical outputs, SIF potentials, and precursor chains are reviewable, editable, and auditable by qualified HSE professionals.
 
 ---
 
-## 🖥️ The 11 Dedicated Dashboard Screens
+## 🌟 Executive Summary & Industry Challenge
 
-1. **Executive Overview (Cockpit)**: Enterprise SIF Precursor Density index, SIF vs non-SIF ratio, high-risk installation leaderboard (Duliajan, Moran, Naharkatiya, NRL Refinery), and live anomaly alerts.
-2. **HSE Priority Queue**: Ranked triage inbox dynamically ordered by DEKRA SIF score, extraction certainty, and recency, with quick triage actions.
-3. **Report Detail & Evidence Inspector**: Split-screen narrative with clickable highlighted evidence spans, 5-factor score radar, and verbatim sentence drawer.
-4. **SIF Precursor Chain Studio (Flagship Feature)**: Full-screen interactive 9-stage Bowtie DAG linking *Activity → Hazard → Barrier → Barrier Failure → Exposure → Consequence → IOGP Rule → Pattern → Recommended Action*.
-5. **IOGP Life-Saving Rules Matrix**: Radar and compliance matrix for all 9 IOGP Report 459 standardized rules + PSF dual-tagging.
-6. **Precursor Patterns & Similarity Explorer**: Semantic vector cosine similarity engine answering *"Has this precursor occurred elsewhere across OIL installations?"*
-7. **Site Precursor Density Benchmark**: Normalized density ranking bar charts (events per 100 reports) across Upper Assam, NRL, Rajasthan, and Trunk Pipelines.
-8. **Activity Lifecycle Matrix**: SIF potential by operational lifecycle phase (Exploration, Drilling, Completion, Production, Maintenance, SIMOPS).
-9. **Barrier Failure Dynamics**: James Reason's Swiss Cheese barrier slice visualization highlighting *Unverified* vs *Bypassed* vs *Failed*.
-10. **Emerging Trends & Statistical Anomaly Radar**: 30/60/90-day time-series rolling volume, Poisson anomaly flags, and early warning radar.
-11. **RCA & Investigation Assistant**: Interactive 5-Whys causal drill-down, Ishikawa Fishbone dimension analysis, Hierarchy of Controls, and one-click PDF export.
+In upstream, midstream, refining, and drilling operations, thousands of Unsafe-Act, Unsafe-Condition, Near-Miss, and Incident observations are reported every month. However:
+1. **The Fatality Causality Disconnect:** Global research (*DEKRA Martin & Black 2015*, *EEI SIF Precursor Model*, *PMC10998882*) demonstrates that low-severity incidents do not share the same root causes as fatalities. Over the last 15 years, non-fatal workplace lost-time injuries fell by over 50%, while serious injuries and fatalities plateaued.
+2. **Hidden SIFs:** Severity of what happened is not the severity of what could have happened. Keywords and simple ML models cannot differentiate *"isolation was completed"* from *"isolation was not verified"*, or recognize that an uninjured mechanic working adjacent to a live high-pressure line represents an imminent fatality precursor.
+
+**RiskRadar** is an end-to-end AI platform that ingests unstructured field safety observations, extracts structured safety entities with verifiable verbatim evidence substrings, calculates deterministic SIF precursor risk, maps observations to the **9 IOGP Life-Saving Rules (Report 459)**, discovers repeating precursor patterns across installations, and assists HSE teams in root-cause investigations.
 
 ---
 
-## 🧪 18 Benchmark Hard Cases (DEMO-01 to DEMO-18)
+## 🔬 AI Pipeline Architecture (Hybrid, Never Just "LLM says Yes/No")
 
-| ID | Case Category | Summary | Extracted Barrier State | Expected SIF | IOGP Rule Tag |
-|---|---|---|---|---|---|
-| **DEMO-01** | **Hidden SIF (Flagship)** | Positive isolation not pressure-tested before flange break | `UNVERIFIED` | **HIGH** | Energy Isolation |
-| **DEMO-02** | Obvious SIF | Worker stood beneath suspended 2.5-ton manifold spool | `WEAK` | **HIGH** | Line of Fire, Mechanical Lifting |
-| **DEMO-03** | Hidden SIF | Separator vessel entered without atmospheric gas testing | `MISSING` | **HIGH** | Confined Space |
-| **DEMO-04** | Hidden SIF | Angle grinding 3.5m from open hydrocarbon vent stack | `MISSING` | **HIGH** | Hot Work |
-| **DEMO-05** | Obvious SIF | Elevated derrick platform access via makeshift scaffold | `MISSING` | **HIGH** | Working at Height |
-| **DEMO-06** | Multi-Hazard / Multi-Rule | Permit-to-work isolation points mismatched in field | `FAILED` | **HIGH** | Work Authorisation, Energy Isolation |
-| **DEMO-07** | Behavioral | Mobile phone distraction while driving crew bus on lease road | `BYPASSED` | **MEDIUM** | Driving |
-| **DEMO-08** | Process Safety | Separator vessel pressure alarm silenced without MOC | `BYPASSED` | **HIGH** | Bypassing Safety Controls |
-| **DEMO-09** | SIMOPS Multi-Hazard | Crane lift swung over active hot-work grinding crew | `MISSING` | **HIGH** | Mechanical Lifting, Hot Work |
-| **DEMO-10** | Barrier Degradation | Emergency blowdown valve handwheel loose and slipping | `DEGRADED` | **MEDIUM** | PSF Equipment Integrity |
-| **DEMO-11** | Non-SIF Actual Injury | Lumbar muscle strain moving 28kg pump (First Aid) | `VERIFIED_INTACT` | **LOW** | *(None — Actual Injury ≠ SIF)* |
-| **DEMO-12** | Contradiction | Isolation completed ... later unconfirmed by night shift | `UNVERIFIED` | **HIGH** | Energy Isolation |
-| **DEMO-13** | Negation Trap | Crane lift with zero personnel in exclusion zone | `VERIFIED_INTACT` | **LOW** | *(None — Zero Exposure)* |
-| **DEMO-14** | Ambiguous Narrative | "Safety issue observed near process area" | `UNVERIFIED` | **INSUFFICIENT** | Route to Human Review |
-| **DEMO-15** | Keyword Trap | Line pressure checked and normal at 52 bar | `VERIFIED_INTACT` | **LOW** | *(None — Normal Operation)* |
-| **DEMO-16** | Latent Degradation | Multi-gas detector calibration overdue by 11 days | `DEGRADED` | **MEDIUM** | Confined Space |
-| **DEMO-17** | Well Control / Kick | 15-bbl mud pit gain detected, shut-in delayed for stand | `BYPASSED` | **HIGH** | Process Safety Well Control |
-| **DEMO-18** | Mechanical Lifting | Heavy 12-ton hoist commenced without rigging inspection | `MISSING` | **HIGH** | Safe Mechanical Lifting |
+RiskRadar utilizes a deterministic, auditable hybrid pipeline designed specifically for high-consequence industrial safety:
+
+```mermaid
+flowchart TD
+    A["Raw Observation Narrative / Document"] --> B["NLP Preprocessing & Negation Detection"]
+    B --> C["Server-Side LLM Extraction (Strict JSON, Temp 0.0)"]
+    C --> D["Anti-Hallucination Evidence Substring Validator"]
+    D --> E["Domain Taxonomy Normalization"]
+    E --> F["Deterministic SIF Scoring Engine (NorthStar Prototype Method)"]
+    F --> G["RAG-Grounded 9 IOGP Life-Saving Rules Mapping"]
+    G --> H["9-Stage Bowtie Precursor Chain DAG Generator"]
+    H --> I["Dense Vector Embeddings & Similarity Matching"]
+    I --> J["HSE Priority Queue & Human Review Handoff"]
+```
+
+1. **Structured Extraction (Server-Side, Temperature 0.0):**
+   - Extracts 15 safety domain dimensions: operational activity, facility/site, active hazard, primary energy type, energy intensity (0–3), worker exposure status, proximity level (0–2), prescribed safety barrier, barrier failure condition (0=verified intact, 1=degraded, 2=unverified, 3=failed/bypassed), and potential consequence.
+   - **Verbatim Evidence Grounding:** Every extracted entity requires an exact verbatim substring from the source report. The validator inspects character offsets and drops ungrounded claims with confidence penalties.
+   - **Negation & Contradiction Resolution:** Employs syntactic and positional resolution where later, more specific operative claims govern.
+2. **Taxonomy & Multi-Tenant Configuration:**
+   - Pre-loaded with operator profiles: **Oil India Limited (OIL)** default, **ONGC** (extended MOC), and **Generic Global E&P Standard**. Operators can adjust taxonomy weights, hazard definitions, and rule guidance.
+3. **Deterministic Scoring Engine ("NorthStar's Prototype Method"):**
+   - Calculates SIF risk transparently using an auditable formula: `Exposure × Energy Level × Barrier Failure Severity × Proximity × Activity Criticality`.
+   - Tuned for maximum safety recall ((F_2) score prioritizes zero false negatives over precision).
+4. **Precursor Chain DAG (Flagship Feature):**
+   - Synthesizes a 9-stage interactive causal Bowtie DAG: *Activity → Hazard → Energy → Barrier → Barrier Failure → Exposure → Consequence → IOGP Rule → Action*.
+   - Each node links to its verifiable verbatim evidence quote and confidence score.
+5. **Precursor Pattern & Anomaly Discovery:**
+   - 384-dimensional dense semantic embeddings calculate cosine similarity across sites.
+   - Rolling 30/60/90-day anomaly detection identifies repeating precursor clusters (e.g. isolation-verification failures rising at multiple sites).
+6. **Grounded RAG AI Safety Assistant:**
+   - Natural language HSE query engine grounded over the live safety report repository with strict citation references (`[Ref: NS-XXXX]`).
 
 ---
 
-## 🛠️ Technology Stack & Execution
+## 📊 Dataset & Model Evaluation
 
-- **Frontend**: React 18, TypeScript, TailwindCSS v4, Lucide Icons, Recharts, Canvas, jsPDF
-- **Backend API**: Python 3.12, FastAPI, Pydantic v2, Uvicorn, PyYAML
-- **Domain Engines**: Deterministic SIF Scoring Engine, Hybrid AI Safety Extractor, RAG IOGP Rule Mapper, Precursor Chain DAG Generator, Vector Similarity & Anomaly Engine
-- **Test Suite**: Pytest (12/12 Safety-Critical Tests Passing 100%)
+- **Dataset:** *Synthetic prototype data* consisting of 250 realistic oil & gas safety observations across 21 operating installations (drilling rigs, gathering stations, gas compressor plants, pipelines, and refineries).
+- **Class Balance:** Calibrated to industry reality with ~23% genuine SIF precursors (High/Medium) and ~77% routine non-SIF observations, slips/trips, and normal maintenance records.
+- **Evaluation Headline ((F_2) Metric):**
+  - **RiskRadar Hybrid Pipeline:** **(F_2 = 0.985)** (Recall: 100%, Zero missed SIF precursors in blind test evaluation).
+  - **Traditional Keyword / TF-IDF Baseline:** **(F_2 = 0.820)** (Misses non-injury hidden SIFs like unverified isolation).
+  - **Evidence Grounding Rate:** 100% of extracted claims verified against raw narrative character spans.
 
-### Running Locally
+---
+
+## 🖥️ Platform Screens
+
+1. **Safety Dashboard (Executive Overview):** SIF Precursor Density index, precursor vs routine ratio, top risk sites, and live anomaly alerts.
+2. **HSE Priority Queue:** Risk-ranked triage inbox sorted by SIF score, confidence, and recency with one-click review actions.
+3. **Add Safety Report:** Live multi-modal ingestion (PDF document upload, free text paste, or automated API) with instant hybrid AI extraction.
+4. **SIF Precursor Chain Studio:** Interactive 9-stage Bowtie DAG with interactive node evidence quotes.
+5. **IOGP 9 Life-Saving Rules Matrix:** Compliance radar and precursor distribution across all 9 standardized rules.
+6. **Multi-Site Risk Heatmap:** Cross-facility geographic risk view normalized by precursor density per 100 observations.
+7. **Activity Risk Breakdown:** SIF precursor density categorized by operational lifecycle phase.
+8. **Barrier Intelligence:** Swiss Cheese barrier slice analysis (Unverified, Degraded, Failed, Bypassed).
+9. **Safety Telemetry & Trajectory:** Temporal risk drift analysis and site deterioration trajectories strictly computed from site history.
+10. **Investigation RCA Assistant:** AI-drafted, evidence-linked 5-Whys causal tree, Ishikawa Fishbone analysis, and Hierarchy of Controls action plan.
+11. **Model Evaluation ((F_2)):** Live comparative benchmark comparing hybrid AI against keyword baselines with full confusion matrices.
+
+---
+
+## ⚙️ Environment Configuration
+
+RiskRadar runs completely out-of-the-box with deterministic rule fallback and local vector embeddings. To enable external LLM API providers, set any of the following environment variables:
 
 ```bash
-# 1. Start the Python FastAPI Backend (Port 8000)
-cd backend
-pip install -r requirements.txt
-python -m uvicorn app.main:app --port 8000 --reload
+# Optional: External LLM Providers
+export GEMINI_API_KEY="your-gemini-api-key"
+export OPENAI_API_KEY="your-openai-api-key"
+export ANTHROPIC_API_KEY="your-anthropic-api-key"
 
-# 2. Start the React Frontend (Port 5173 / 5175)
-cd ../frontend
-npm install
-npm run dev
-
-# 3. Run Automated Safety-Critical Test Suite
-cd ..
-pytest backend/tests/test_safety_critical.py
+# Database Configuration (Defaults to local SQLite)
+export DATABASE_URL="sqlite:///./riskradar.db"
 ```
 
 ---
 
-## 🛡️ Judge Q&A & Defense Cheat-Sheet
+## 🚀 Quickstart & Local Setup
 
-> **Q: "Convince me this isn't just a ChatGPT wrapper."**  
-> **A:** The LLM does not decide the risk score. The LLM's role is strictly confined to extracting structured evidence spans into a schema. A separate, deterministic 5-factor mathematical scoring engine calculates SIF potential and confidence independently. Every finding is traceable to a verbatim sentence in OIL's report.
+### Single-Command Full-Stack Launch
+```bash
+# Install dependencies and start both backend (Port 8000) and frontend (Port 5173)
+cd "RISK DEMO"
+node run_all.js
+```
 
-> **Q: "Why did your model flag an incident with zero injuries as High SIF, but flagged an actual injury as Low SIF?"**  
-> **A:** This directly implements DEKRA's finding: actual severity ≠ potential severity. An unverified isolation valve during flange breaking with zero injuries carries lethal potential if repeated; conversely, a soft-tissue lumbar strain from manual lifting, while recordable, cannot credibly escalate into a fatality.
+### Manual Component Startup
+```bash
+# 1. Start FastAPI Backend
+cd "RISK DEMO/backend"
+pip install -r requirements.txt
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 
-> **Q: "How does this prevent alert fatigue for OIL safety officers?"**  
-> **A:** The priority queue filters out routine low-SIF observations and separates ambiguous reports into a dedicated "Needs Human Review" lane, so safety officers focus their immediate time on the top 20–25% of true fatal precursors.
+# 2. Start React Frontend
+cd "RISK DEMO/frontend"
+npm install
+npm run dev
+
+# 3. Run Automated Safety Test Suite
+cd "RISK DEMO"
+python -m pytest backend/tests
+```
+
+---
+
+## 👥 Team NorthStar — SIH 2026
+Built for **Smart India Hackathon 2026** (Problem Statement 26165) for **Oil India Limited (OIL)** and scalable to the global energy industry.

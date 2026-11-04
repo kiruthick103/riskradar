@@ -2,8 +2,12 @@
   "name": "riskradar",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "build": "npm --prefix frontend install && npm --prefix frontend run build",
-    "dev": "npm --prefix frontend run dev"
+    "dev": "node run_all.js",
+    "start": "node run_all.js",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload",
+    "build": "npm --prefix frontend install && npm --prefix frontend run build"
   }
 }

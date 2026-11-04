@@ -8,10 +8,12 @@ import {
   Building2,
   Activity,
   Layers,
+  Radio,
+  FileCheck2,
   ChevronLeft,
   ChevronRight,
   PanelLeftClose,
-  PanelLeftOpen
+  PanelLeftOpen, BarChart2
 } from "lucide-react";
 import { RiskRadarLogo } from "./RiskRadarLogo";
 import { useLanguage } from "../context/LanguageContext";
@@ -101,7 +103,10 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
     { id: 5, label: t("nav.iogp"), icon: ShieldAlert },
     { id: 7, label: t("nav.site"), icon: Building2 },
     { id: 8, label: t("nav.activity"), icon: Activity },
-    { id: 9, label: t("nav.barrier"), icon: Layers }
+    { id: 9, label: t("nav.barrier"), icon: Layers },
+    { id: 10, label: t("nav.telemetry"), icon: Radio },
+    { id: 11, label: t("nav.rca"), icon: FileCheck2 },
+    { id: 13, label: "Model Evaluation (F2)", icon: BarChart2 }
   ];
 
   return (

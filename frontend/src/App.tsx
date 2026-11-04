@@ -20,9 +20,14 @@ import { Screen6_SimilarityExplorer } from "./screens/Screen6_SimilarityExplorer
 import { Screen7_SiteComparison } from "./screens/Screen7_SiteComparison";
 import { Screen8_ActivityAnalysis } from "./screens/Screen8_ActivityAnalysis";
 import { Screen9_BarrierFailures } from "./screens/Screen9_BarrierFailures";
+import { Screen10_SafetyTelemetry } from "./screens/Screen10_SafetyTelemetry";
 import { Screen11_InvestigationRCA } from "./screens/Screen11_InvestigationRCA";
+import { TrustBanner } from "./components/TrustBanner";
+import { AIAssistantDrawer } from "./components/AIAssistantDrawer";
+import { Screen13_ModelEvaluation } from "./screens/Screen13_ModelEvaluation";
 
-import { fetchReports, createReport, submitReportReview } from "./api/client";
+
+import { fetchReports, fetchExecutiveOverview, createReport, submitReportReview, fetchRealtimeStats } from "./api/client";
 import { buildLocalPrecursorChain } from "./data/seedReports";
 import fallbackReportsData from "./data/fallbackReports.json";
 import { FileText, ShieldCheck, Sparkles } from "lucide-react";
@@ -48,16 +53,45 @@ export function App() {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [isRCAModalOpen, setIsRCAModalOpen] = useState(false);
 
-  // Initialize dataset & keep synced with live backend
+  const [tenantId, setTenantId] = useState<string>("oil_india");
+  const [isAIAssistantOpen, setIsAIAssistantOpen] = useState<boolean>(false);
+
+  const getTenantName = (id: string) => {
+    switch (id) {
+      case "ongc": return "ONGC (Offshore & Basin)";
+      case "global_ep": return "Global E&P Contractors";
+      default: return "Oil India Limited (OIL)";
+    }
+  };
+
+
+  const [overviewData, setOverviewData] = useState<any>(null);
+  const [realtimeStats, setRealtimeStats] = useState<any>(null);
+  const [isBackendConnected, setIsBackendConnected] = useState<boolean>(false);
+
+  // Initialize dataset & keep synced with live backend every 5 seconds
   useEffect(() => {
     let isMounted = true;
 
     async function loadData() {
       try {
-        const serverReports = await fetchReports();
-        if (isMounted && serverReports && serverReports.length > 0) {
-          setReports(serverReports);
-          setSelectedReport((prev) => prev || serverReports[0]);
+        const [serverReports, overview, rtStats] = await Promise.all([
+          fetchReports(),
+          fetchExecutiveOverview(),
+          fetchRealtimeStats()
+        ]);
+        if (isMounted) {
+          if (serverReports && serverReports.length > 0) {
+            setReports(serverReports);
+            setSelectedReport((prev) => prev || serverReports[0]);
+            setIsBackendConnected(true);
+          }
+          if (overview) {
+            setOverviewData(overview);
+          }
+          if (rtStats) {
+            setRealtimeStats(rtStats);
+          }
         }
       } catch (err) {
         console.warn("Could not sync with backend:", err);
@@ -65,7 +99,7 @@ export function App() {
     }
 
     loadData();
-    const interval = setInterval(loadData, 8000);
+    const interval = setInterval(loadData, 5000);
     return () => {
       isMounted = false;
       clearInterval(interval);
@@ -181,12 +215,18 @@ export function App() {
   const highSIFCount = reports.filter((r) => r.assessment.sif_potential_label === "HIGH").length;
   const currentReport = selectedReport || reports[0];
 
+  // Screen navigation — always reset body overflow to prevent modal scroll-lock carrying over
+  const navigateToScreen = (screenId: number) => {
+    document.body.style.overflow = "";
+    setActiveScreen(screenId);
+  };
+
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex font-sans">
       {/* 1. Left Side Navigation Panel */}
       <SidebarNav
         activeScreen={activeScreen}
-        setActiveScreen={setActiveScreen}
+        setActiveScreen={navigateToScreen}
         priorityQueueCount={reports.filter((r) => r.assessment.sif_potential_label === "HIGH" && r.review_status === "PENDING").length}
         onOpenNewReportModal={() => setIsNewReportModalOpen(true)}
         onOpenBatchModal={() => setIsBatchModalOpen(true)}
@@ -232,7 +272,7 @@ export function App() {
           {/* Screen 1: Executive Overview */}
           {activeScreen === 1 && (
             <Screen1_ExecutiveOverview
-              overviewData={null}
+              overviewData={overviewData}
               reports={filteredReports}
               onSelectReport={(r) => {
                 setSelectedReport(r);
@@ -400,6 +440,26 @@ export function App() {
                 setSelectedReport(r);
                 setActiveScreen(12);
               }}
+            />
+          )}
+
+          {/* Screen 10: Asset Safety Telemetry & Risk Trajectory */}
+          {activeScreen === 10 && (
+            <Screen10_SafetyTelemetry
+              reports={reports}
+              onSelectReport={(r) => {
+                setSelectedReport(r);
+                setActiveScreen(12);
+              }}
+              onNavigateToScreen={(s) => setActiveScreen(s)}
+            />
+          )}
+
+          {/* Screen 11: Investigation Studio & RCA Assistant */}
+          {activeScreen === 11 && (
+            <Screen11_InvestigationRCA
+              report={currentReport}
+              onOpenExportModal={() => setIsRCAModalOpen(true)}
             />
           )}
         </main>

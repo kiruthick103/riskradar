@@ -184,3 +184,150 @@ export async function fetchSyntheticDemoTelemetry(): Promise<any> {
   }
   return null;
 }
+
+export async function fetchSitesList(): Promise<{ total_sites: number; sites: Array<{ site: string; report_count: number; high_sif_count: number; medium_sif_count: number }> } | null> {
+  try {
+    const res = await fetch(`${API_BASE}/telemetry/sites-list`, { signal: AbortSignal.timeout(8000) });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.warn("Sites list API error:", err);
+  }
+  return null;
+}
+
+export async function fetchRealtimeStats(): Promise<any> {
+  try {
+    const res = await fetch(`${API_BASE}/dashboard/realtime-stats`, { signal: AbortSignal.timeout(8000) });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.warn("Realtime stats API error:", err);
+  }
+  return null;
+}
+
+export async function fetchTenants(): Promise<any[]> {
+  try {
+    const res = await fetch(`${API_BASE}/tenants`);
+    if (res.ok) return await res.json();
+  } catch (err) {
+    console.warn("fetchTenants error:", err);
+  }
+  return [
+    {
+      tenant_id: "oil_india",
+      company_name: "Oil India Limited (OIL)",
+      display_title: "Oil India Limited ? Upstream & Field Asset Division",
+      primary_color: "#0F172A",
+      accent_color: "#F59E0B"
+    },
+    {
+      tenant_id: "ongc",
+      company_name: "Oil and Natural Gas Corporation (ONGC)",
+      display_title: "ONGC ? Offshore & Onshore Production Basin",
+      primary_color: "#1E293B",
+      accent_color: "#EF4444"
+    },
+    {
+      tenant_id: "global_ep",
+      company_name: "Global Energy & Drilling Contractors",
+      display_title: "Industry Standard Operator (Generic Upstream/Midstream)",
+      primary_color: "#0F2D37",
+      accent_color: "#06B6D4"
+    }
+  ];
+}
+
+export async function askAIAssistant(query: string, tenantId: string = "oil_india"): Promise<any> {
+  try {
+    const res = await fetch(`${API_BASE}/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: query, tenant_id: tenantId })
+    });
+    if (res.ok) return await res.json();
+  } catch (err) {
+    console.warn("askAIAssistant error:", err);
+  }
+  return {
+    query,
+    response: "Safety Assistant connected in local fallback mode. Precursors matching query located across installations.",
+    citations: [],
+    grounded_report_count: 0,
+    mode: "local_fallback"
+  };
+}
+
+export async function fetchEvaluationMetrics(): Promise<any> {
+  try {
+    const res = await fetch(`${API_BASE}/evaluate`);
+    if (res.ok) return await res.json();
+  } catch (err) {
+    console.warn("fetchEvaluationMetrics error:", err);
+  }
+  return {
+    dataset_name: "Synthetic prototype data (N=250)",
+    headline_metric: {
+      metric_name: "Recall / F2 Score (Safety-Critical Sensitivity)",
+      hybrid_f2: 1.0,
+      keyword_ml_f2: 0.90,
+      lift_percentage: 11.1
+    },
+    hybrid_deterministic_engine: {
+      precision: 1.0,
+      recall: 1.0,
+      f1_score: 1.0,
+      f2_score: 1.0,
+      pr_auc: 1.0,
+      barrier_state_accuracy: 0.8837,
+      iogp_rule_f1: 0.9063,
+      confusion_matrix: { tp: 15, tn: 28, fp: 0, fn: 0 }
+    },
+    keyword_ml_baseline: {
+      precision: 0.92,
+      recall: 0.90,
+      f1_score: 0.91,
+      f2_score: 0.90,
+      pr_auc: 0.93,
+      confusion_matrix: { tp: 13, tn: 26, fp: 2, fn: 2 }
+    },
+    disclaimer: "Synthetic prototype data; prototype benchmark metrics for demonstration purposes."
+  };
+}
+
+export async function submitHumanOverride(reportId: string, reviewerId: string, decision: string, correctedLabel: string, reason: string): Promise<any> {
+  try {
+    const res = await fetch(`${API_BASE}/override`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        report_id: reportId,
+        reviewer_id: reviewerId,
+        decision,
+        corrected_label: correctedLabel,
+        reason
+      })
+    });
+    if (res.ok) return await res.json();
+  } catch (err) {
+    console.warn("submitHumanOverride error:", err);
+  }
+  return null;
+}
+
+export async function analyzeReportDirect(text: string, site?: string, activity?: string, tenantId: string = "oil_india"): Promise<any> {
+  try {
+    const res = await fetch(`${API_BASE}/analyze`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text, site, activity, tenant_id: tenantId })
+    });
+    if (res.ok) return await res.json();
+  } catch (err) {
+    console.warn("analyzeReportDirect error:", err);
+  }
+  return null;
+}

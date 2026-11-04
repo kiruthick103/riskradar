@@ -278,6 +278,54 @@ export const PrecursorChainDAG: React.FC<PrecursorChainDAGProps> = ({
               <strong className="text-slate-900">Context:</strong> {selectedNode.subtext}
             </p>
 
+            {/* Verbatim Evidence Quote */}
+            <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-950 space-y-1">
+              <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-amber-800">
+                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                <span>Grounded Verbatim Evidence Quote for {selectedNode.title}:</span>
+              </div>
+              <p className="text-xs font-mono font-medium leading-relaxed italic bg-white/70 p-2.5 rounded-xl border border-amber-200">
+                "{selectedNode.evidence_sentence || selectedNode.subtext || "Direct operational evidence established in safety narrative."}"
+              </p>
+            </div>
+
+            {/* Complete Observation Narrative with Interactive Highlight */}
+            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-2">
+              <div className="flex items-center justify-between text-2xs font-bold text-slate-500 uppercase tracking-wider">
+                <span>Complete Observation Narrative (Click Node to Highlight Evidence Quote):</span>
+                <span className="text-blue-600 font-mono">Stage {selectedNode.sequence_order} Active</span>
+              </div>
+              <p className="text-xs text-slate-800 leading-relaxed font-sans">
+                {(() => {
+                  const fullText = report.narrative_text || "";
+                  const targetSpan = (selectedNode.evidence_sentence || "").trim();
+                  if (!targetSpan || !fullText.toLowerCase().includes(targetSpan.toLowerCase())) {
+                    return fullText;
+                  }
+                  const startIdx = fullText.toLowerCase().indexOf(targetSpan.toLowerCase());
+                  const before = fullText.slice(0, startIdx);
+                  const matched = fullText.slice(startIdx, startIdx + targetSpan.length);
+                  const after = fullText.slice(startIdx + targetSpan.length);
+
+                  return (
+                    <>
+                      {before}
+                      <mark
+                        className="px-1.5 py-0.5 rounded-md font-semibold text-slate-950 transition-all duration-300 shadow-sm"
+                        style={{
+                          backgroundColor: selectedNode.status_color ? `${selectedNode.status_color}35` : "#fde047",
+                          borderBottom: `2px solid ${selectedNode.status_color || "#eab308"}`
+                        }}
+                      >
+                        {matched}
+                      </mark>
+                      {after}
+                    </>
+                  );
+                })()}
+              </p>
+            </div>
+
 
           </div>
 
