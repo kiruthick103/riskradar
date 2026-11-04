@@ -450,7 +450,7 @@ export const Screen_ReportIngestion: React.FC<ScreenReportIngestionProps> = ({
               <Sparkles className="w-4 h-4" />
             </span>
             <span className="font-extrabold text-sm text-white tracking-tight">
-              1-Click Showcase Demo Cases (SIH 2026 Evaluation)
+              1-Click Showcase Demo Cases (AI Evaluation)
             </span>
           </div>
           <span className="text-[11px] font-semibold text-slate-400">

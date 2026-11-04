@@ -1,7 +1,7 @@
 # RiskRadar 🛡️
 ## Full-AI Safety Intelligence & SIF Precursor Discovery Platform
-**Smart India Hackathon (SIH) 2026 — Problem Statement 26165**  
-**Team NorthStar** | **Default Operator Showcase:** Oil India Limited (OIL)  
+**Enterprise AI Safety Intelligence Platform**  
+**Operator Deployment:** Oil India Limited (OIL)  
 **Live Application:** [https://risk-radar-new.vercel.app/](https://risk-radar-new.vercel.app/)
 
 ---

@@ -5,7 +5,7 @@ from app.telemetry.router import router as telemetry_router
 
 app = FastAPI(
     title="RiskRadar API",
-    description="AI/NLP SIF Precursor Detection Engine for Oil India Limited (SIH PS 26165)",
+    description="AI/NLP SIF Precursor Detection Engine for Oil India Limited",
     version="1.0.0"
 )
 
@@ -25,7 +25,7 @@ def root():
     return {
         "service": "RiskRadar API",
         "organization": "Oil India Limited (OIL)",
-        "problem_statement": "SIH26165",
+        "platform": "Enterprise HSSE AI",
         "status": "HEALTHY",
         "endpoints": {
             "docs": "/docs",

@@ -45,7 +45,7 @@ TENANTS: Dict[str, TenantConfig] = {
             "Kumchai Well Site 2",
             "Digboi Heritage Rig #03"
         ],
-        description="Default national operator tenant (SIH 2026 PS 26165). Standard IOGP 9 Life-Saving Rules and 5-Factor SIF Scoring."
+        description="Default national operator tenant (Oil India Limited). Standard IOGP 9 Life-Saving Rules and 5-Factor SIF Scoring."
     ),
     "ongc": TenantConfig(
         tenant_id="ongc",

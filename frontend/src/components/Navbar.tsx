@@ -80,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {getScreenTitle(activeScreen)}
           </h2>
           <span className="text-xs px-2 py-0.5 rounded-md bg-slate-100 text-slate-500 font-mono font-bold">
-            PS 26165 · Team NorthStar
+            AI HSSE Safety Intelligence
           </span>
         </div>
 
