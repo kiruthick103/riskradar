@@ -23,6 +23,22 @@ In upstream, midstream, refining, and drilling operations, thousands of Unsafe-A
 
 ---
 
+## 🧠 Foundations of AI (CS23533) Architecture & Implementation
+
+RiskRadar implements core classical and probabilistic AI techniques from scratch in Python (`backend/app/ai_core/`), creating a fully explainable, white-box safety intelligence engine:
+
+| CS23533 Unit | Academic Technique | Module Path | Where in RiskRadar | Explainable Safety Role |
+| :--- | :--- | :--- | :--- | :--- |
+| **Unit I** | **Intelligent Rational Agent** | `backend/app/ai_core/agent.py` | Pipeline Orchestrator & Triage | Perceives observation, reasons over evidence, acts with utility-maximizing action (`ESCALATE`, `HUMAN_REVIEW`, `ROUTINE_LOG`). |
+| **Unit I-II** | **A* / Uniform-Cost Search** | `backend/app/ai_core/search_precursor.py` | SIF Precursor Chain View | Graph pathfinding from Activity → Hazard → Barrier → Failure → Exposure → Consequence. Cost = -log P(transition), Heuristic = remaining risk. |
+| **Unit II** | **Local / Heuristic Search** | `backend/app/ai_core/local_search.py` | Config Tuning Engine | Hill Climbing & Simulated Annealing to optimize scoring weights against F2 score on ground-truth safety reports. |
+| **Unit III** | **Constraint Satisfaction (CSP)** | `backend/app/ai_core/csp_planner.py` | Recommended Actions & Heatmap | Backtracking + Forward Checking assigns actions to response crews subject to shift capacity & permits; TSP orders high-risk inspection routes. |
+| **Unit IV** | **Knowledge-Based Agent & Logic** | `backend/app/ai_core/knowledge_base.py` | IOGP 9 Life-Saving Rules | Propositional Horn clauses, forward chaining derives violations, backward chaining generates proof trees for human auditability. |
+| **Unit V** | **Bayesian Network Reasoning** | `backend/app/ai_core/bayesian_network.py` | Risk Calibration & Confidence | CPTs learned from 60 authentic case studies. Missing values are marginalized (not guessed); exact posterior P(SIF=High) calibrates confidence. |
+| **Unit V (Exp 10)** | **Naive Bayes Classifier** | `backend/app/ai_core/bayesian_network.py` | Model Evaluation Benchmark | Feature-frequency classifier acting as an explainable baseline in the Model Evaluation page. |
+
+---
+
 ## 🔬 AI Pipeline Architecture (Hybrid, Never Just "LLM says Yes/No")
 
 RiskRadar utilizes a deterministic, auditable hybrid pipeline designed specifically for high-consequence industrial safety:

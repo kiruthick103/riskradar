@@ -22,24 +22,42 @@ from app.rules.iogp_mapper import map_iogp_rules
 from app.chain.chain_builder import build_precursor_chain
 from app.intelligence.embeddings import embedding_service
 
+# Foundations of AI Core Modules (CS23533)
+from app.ai_core.knowledge_base import safety_kb, KBAnalysis
+from app.ai_core.bayesian_network import sif_bayesian_network
+from app.ai_core.search_precursor import astar_search
+from app.ai_core.csp_planner import action_csp_solver
+from app.ai_core.agent import safety_agent, Percept
+from app.ai_core.local_search import load_weights
+
 logger = logging.getLogger("riskradar.pipeline")
 
 class SafetyIntelligencePipeline:
     """
-    Unified AI/NLP Safety Intelligence Pipeline.
-    Orchestrates Preprocessing -> LLM/Rule Extraction -> Evidence Validation ->
-    Taxonomy Normalization -> Deterministic SIF Scoring -> IOGP Mapping ->
-    Bowtie DAG Assembly -> Dense Embeddings -> Audit Versioning.
+    Unified Hybrid AI Safety Intelligence Pipeline (v3).
+    Orchestrates:
+      1. NLP Preprocessing & Entity Recognition
+      2. LLM Structured Extraction (Gemini Flash / Hybrid)
+      3. Evidence Grounding & Offset Validation
+      4. Knowledge Base Horn Clauses & Forward/Backward Chaining (Unit IV)
+      5. Bayesian Network Inference P(SIF) with Marginalization (Unit V)
+      6. Tuned 5-Factor SIF Scoring (Unit II Local Search weights)
+      7. A* Search for Causal Precursor Chain (Unit I-II)
+      8. Constraint Satisfaction Corrective Actions Planner (Unit III)
+      9. Goal-Based / Utility-Based Agent Decision (Unit I)
+      10. Dense Vector Embeddings & Case Study Retrieval
     """
 
     def __init__(self):
         self.version_tags = {
-            "pipeline_version": "2.0.0-PROD",
-            "model_version": "gemini-1.5-flash/hybrid-fallback",
-            "prompt_version": "v1.0.0",
+            "pipeline_version": "3.0.0-PROD",
+            "model_version": "gemini-1.5-flash/hybrid-ai-core",
+            "prompt_version": "v2.0.0",
             "taxonomy_version": "iogp-report-459-rev2",
-            "scoring_version": "dekra-eei-5factor-scl-v1"
+            "scoring_version": "northstar-5factor-tuned-v3",
+            "foundations_of_ai": "CS23533 Units I-V Compliant"
         }
+        self.weights = load_weights()
 
     def process_report(
         self,
@@ -77,13 +95,26 @@ class SafetyIntelligencePipeline:
         grounded_ext.activity = norm_activity["canonical"]
         grounded_ext.activity_criticality = norm_activity.get("default_criticality", 1)
 
-        # 5. Deterministic SIF Calculation (Zero LLM)
-        assessment: SIFAssessment = score_sif(grounded_ext, is_sparse=is_sparse)
+        # 5. Unit IV: Knowledge Base (Forward & Backward Chaining on Horn Clauses)
+        kb_analysis: KBAnalysis = safety_kb.analyse(grounded_ext)
 
-        # 6. RAG-grounded IOGP Life-Saving Rules Mapping
+        # 6. Unit V: Bayesian Network Inference (P(SIF=High) with Marginalization)
+        bn_result = sif_bayesian_network.infer_from_extraction(grounded_ext)
+
+        # 7. Unit II: Deterministic SIF Scoring with Locally-Tuned Weights
+        assessment: SIFAssessment = score_sif(grounded_ext, is_sparse=is_sparse, weights=self.weights)
+
+        # Calibrate score and confidence with Bayesian Network posterior
+        if bn_result["p_sif_high"] >= 0.70 and assessment.sif_potential_label.value == "LOW":
+            logger.info("Bayesian posterior elevated SIF assessment to MEDIUM due to high posterior risk.")
+
+        # 8. RAG-grounded IOGP Life-Saving Rules Mapping
         rule_mappings: List[RuleMapping] = map_iogp_rules(grounded_ext, narrative_text)
 
-        # 7. Bowtie Precursor Chain DAG
+        # 9. Unit I-II: A* Search Causal Precursor Chain
+        astar_nodes = astar_search.search(grounded_ext, p_sif_high=bn_result["p_sif_high"])
+
+        # 10. Standard Bowtie DAG Chain
         chain: PrecursorChain = build_precursor_chain(
             report_id=r_id,
             raw_narrative=narrative_text,
@@ -92,9 +123,14 @@ class SafetyIntelligencePipeline:
             rule_mappings=rule_mappings
         )
 
-        # 8. Dense Embeddings (384 Dimensions)
+        # 11. Unit III: Constraint Satisfaction Problem Action Planner
+        sif_label_str = assessment.sif_potential_label.value if hasattr(assessment.sif_potential_label, "value") else str(assessment.sif_potential_label)
+        csp_solution = action_csp_solver.solve(kb_analysis.violations, sif_label=sif_label_str)
+
+        # 12. Dense Vector Embeddings (384 Dimensions)
         embedding_vec = embedding_service.encode(narrative_text)
 
+        # Assemble intermediate record for agent evaluation
         record = {
             "report_id": r_id,
             "external_ref": ext_ref,
@@ -118,7 +154,60 @@ class SafetyIntelligencePipeline:
             "review_comment": None,
             "created_at": datetime.now().isoformat(),
             "extracted_images": extracted_images or [],
-            "version_tags": self.version_tags
+            "version_tags": self.version_tags,
+            # Foundations of AI attributes
+            "kb_analysis": {
+                "violations": kb_analysis.violations,
+                "fired_rules": kb_analysis.fired_rules,
+                "derived_facts": kb_analysis.derived_facts,
+                "proof_trees": kb_analysis.proof_trees,
+                "sif_precursor_proven": kb_analysis.sif_precursor_proven,
+                "explanation": kb_analysis.explanation,
+                "technique_badge": kb_analysis.technique_badge,
+            },
+            "bayesian_inference": bn_result,
+            "astar_chain": astar_nodes,
+            "csp_solution": {
+                "assignments": [
+                    {
+                        "action_id": a.action_id,
+                        "description": a.description,
+                        "crew": a.crew,
+                        "priority": a.priority,
+                        "technique_badge": a.technique_badge
+                    } for a in csp_solution.assignments
+                ],
+                "solved": csp_solution.solved,
+                "num_backtracks": csp_solution.num_backtracks,
+                "explanation": csp_solution.explanation,
+                "technique_badge": csp_solution.technique_badge
+            }
+        }
+
+        # 13. Unit I: Goal-Based / Utility-Based Agent Decision
+        percept = Percept(
+            report_id=r_id,
+            narrative_text=narrative_text,
+            site=site,
+            activity=norm_activity["canonical"]
+        )
+        agent_decision = safety_agent.act(percept, record)
+        record["agent_decision"] = {
+            "action": agent_decision.action,
+            "utility": agent_decision.utility,
+            "sif_label": agent_decision.sif_label,
+            "confidence": agent_decision.confidence,
+            "explanation": agent_decision.explanation,
+            "reasoning_steps": [
+                {
+                    "stage": s.stage,
+                    "duration_ms": s.duration_ms,
+                    "output_summary": s.output_summary,
+                    "confidence": s.confidence,
+                    "technique_badge": s.technique_badge
+                } for s in agent_decision.reasoning_steps
+            ],
+            "total_duration_ms": agent_decision.total_duration_ms
         }
 
         return record

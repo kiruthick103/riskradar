@@ -1,1946 +1,620 @@
-[
-  {
-    "report_id": "DEMO-01",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "UNVERIFIED"
+{
+  "CASE-001": {
+    "source_file": "CASE STUDY - Fatality in Reverse Parking of Tender.pdf",
+    "title": "Fatal incident during Parking of fire tender in reverse.",
+    "actual_outcome": "One Fatality.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION",
+      "DRIVING"
+    ]
   },
-  {
-    "report_id": "DEMO-02",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
+  "CASE-002": {
+    "source_file": "CASE STUDY - Hydrogen Sulfide exposure  fatality on external floating roof tank deck (1).pdf",
+    "title": "H2S exposure & fatality on external floating roof tank deck",
+    "actual_outcome": "2 Fatalities",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": []
+  },
+  "CASE-003": {
+    "source_file": "CASE STUDY 10.pdf",
+    "title": "Oil Ingress into waterbodies outside Refinery premises.",
+    "actual_outcome": "Loss of Aquatic life, Water contamination, Soil contamination.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": []
+  },
+  "CASE-004": {
+    "source_file": "CASE STUDY Fire Incident IOC BR 18.pdf",
+    "title": "Fatal Incident due to fire in wet slop oil pump house.",
+    "actual_outcome": "Property Damage and One fatality",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-005": {
+    "source_file": "CASE STUDY HPCL VR 13.pdf",
+    "title": "Fatal Incident due to explosion of sample bomb.",
+    "actual_outcome": "One fatality",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-006": {
+    "source_file": "CASE STUDY MRPL 36.pdf",
+    "title": "Fatal accident during hydrostatic testing of fin-fan cooler.",
+    "actual_outcome": "One fatality",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "WORKING_AT_HEIGHT"
+    ]
+  },
+  "CASE-007": {
+    "source_file": "CASE STUDY OCL GR 14.pdf",
+    "title": "Fatal accident during construction activity",
+    "actual_outcome": "Death of 1 persons",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-008": {
+    "source_file": "CASE STUDY-220 KV cable fire incident.pdf",
+    "title": "220 KV cable fire incident in a RCC cable trench.",
+    "actual_outcome": "Complete damage of 4 nos. of 220 KV feeders (total 12 nos cables) in a span of 175 m",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-009": {
+    "source_file": "CASE STUDY-Furnace Fire Incident IOC JR 35.pdf",
+    "title": "Fire Incident in Crude and Vacuum Distillation Unit (CDU/VDU)",
+    "actual_outcome": "Property Damage",
+    "sif_confirmed": false,
+    "actual_severity": "NONE",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-010": {
+    "source_file": "CSPE072025.pdf",
+    "title": "LNG leakage at LCNG Station.",
+    "actual_outcome": "Product Loss.",
+    "sif_confirmed": false,
+    "actual_severity": "NONE",
+    "primary_rules": [
+      "CONFINED_SPACE",
+      "BYPASSING_SAFETY_CONTROLS"
+    ]
+  },
+  "CASE-011": {
+    "source_file": "Case Study 33.pdf",
+    "title": "Major accident during activity of putting soap solution to the chain conveyer soap tray.",
+    "actual_outcome": "Amputation of contract worker’s right hand.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-012": {
+    "source_file": "Case Study NRL HCU Fire 15.pdf",
+    "title": "Major Fire Incident at HCU.",
+    "actual_outcome": "Production Loss & Property Damage",
+    "sif_confirmed": false,
+    "actual_severity": "NONE",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-013": {
+    "source_file": "Case Study-MOPOL-2025-26 (1).pdf",
+    "title": "Fire Incident at Above-Ground Ethanol Storage Tank During Receipt Operations",
+    "actual_outcome": "Tank Damage. Injury/ Fatality: Nil INCIDENT During an unloading operation of ethanol from tank trucks to AG fixed cone roof tank, a loud noise was heard followed by a fire. As a result of the accident, the tank was momentarily lifted off its sand foundation before settling back down, and the roof was horizontally displaced by approximately one meter. Multiple jet fires erupted from the 1-inch thermal expansion line connected to tank, while ethanol dripped onto the ground from the ruptured pipeline, which caused the fire to spread to the tank inlet ROSOV and its associated cables. The combined spill and jet fires continued for approximately three minutes. OBSERVATIONS ➢ The PV valve size was modified from 150 mm to 75 mm to install a silica gel trap and flame arrestor, but venting adequacy calculations were not performed. ➢ Ethanol unloading pump capacity was increased from 100 KL/hr to 150 KL/hr without conducting any design calculation study. ➢ Valves on thermal expansion lines, between the ROSOV and MOV and before the MOVs, were kept open during unloading operations, which violated the SOP. ➢ Maintenance and inspection records for the expansion line were not available. ➢ The explosion occurred due to abnormal vapor pressure buildup in the tank. The tank and its bottom plate momentarily lifted, severing anchor bolts, before settling back. Subsequently, the shell-to-roof frangible joint failed, displacing the roof horizontally by about 1 meter. The top hand railing broke at multiple locations, the rooftop platform was damaged, and stairway grating with its support structure fell to the ground. ➢ All rooftop appurtenances were displaced or damaged. The dip hatch housing assembly, PV valve mounting assemblies, and HLS assembly were observed leaning in the same direction. ➢ The concrete ring beam foundation of the tank was fractured at multiple points. ➢ Of 17 anchor bolts, 10 were damaged and 2 were missing. Several bolts were severely corroded and thinned out. Anchor bolts were not checked during the last inspection. ➢ The tank had three earthing points, two taken from anchor chairs instead of using austenitic stainless steel grounding lugs on the shell. ➢ Earthing cables of rooftop instruments were found hanging along the stairway. केस स्टडी / CASE STUDY 2 | P a g e ➢ Earthing bonding jumpers were not provided at multiple flange joints of MOV and ROSOV in the tank inlet pipeline. ➢ Inlet ROSOV and MOV cables were damaged by fire. The push button and indicator cover mounted on the ROSOV were also fire-damaged. ➢ The fixed foam pourer feeding pipeline was disconnected inside the dyke for modification work while the tank was in normal operation. ➢ Several flameproof enclosures inside and outside the tank dyke had compromised flameproof integrity. ROOT CAUSE ➢ Modifications to the PV vent design and changes in receipt flow rate were made without recalculating venting adequacy. The added silica gel trap and flame arrestor likely restricted the P&V valve capacity, causing abnormal vapor pressure and tank explosion. ➢ Post-explosion, the frangible joint failed, displacing the roof and damaging appurtenances, including the expansion line. This led to ethanol spillage, with probable ignition from metal-to- metal friction, allowing fire to spread from the tank top to the bottom manifold. ➢ Roof displacement also ruptured the 1-inch expansion line at multiple points, spilling ethanol over the inlet ROSOV and into the manifold area. Compromised FLP enclosures inside the dyke (ROSOVs, MOVs) resulted in ethanol vapors igniting. 3 | P a g e RECOMMENDATIONS ➢ Adequacy of tank venting and design calculations shall be verified for any modification in the PVRV arrangement of storage tanks. The design shall also incorporate provisions for a silica gel trap and a flame arrestor for ethanol tanks while determining vent size adequacy. ➢ All the operations shall be carried out as per SOPs. ➢ Product storage tanks and thermal expansion pipelines shall be inspected and maintained. ➢ The flameproof enclosures shall be inspected for FLP integrity and that records are maintained. ➢ ROSOV cables leading to the control room shall be fire resistant. ➢ The tanks earthing shall be provided through grounding lugs and grounding lug material shall be austenitic stainless steel when attached to carbon or low alloy steel parts. ************ Provided for information purposes only. This information should be evaluated to determine if it is applicable in your operations, to avoid recurrence of such incidents.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "CONFINED_SPACE",
+      "SAFE_MECHANICAL_LIFTING"
+    ]
+  },
+  "CASE-014": {
+    "source_file": "CaseStudy31.pdf",
+    "title": "Fall of travelling block.",
+    "actual_outcome": "Financial loss.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-015": {
+    "source_file": "CaseStudy33.pdf",
+    "title": "Fatal Fall Involving Psychological Distress",
+    "actual_outcome": "Fatal injury.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-016": {
+    "source_file": "CaseStudy36.pdf",
+    "title": "Incident of piercing & leakage from LPG pipeline, while drilling for soil investigation survey for other pipeline in common ROU.",
+    "actual_outcome": "Leakage from LPG pipeline.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-017": {
+    "source_file": "OISDCS2025-26EP13.pdf",
+    "title": "Blowout after well perforation.",
+    "actual_outcome": "Blowout.",
+    "sif_confirmed": true,
+    "actual_severity": "INJURY",
+    "primary_rules": [
+      "ENERGY_ISOLATION",
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-018": {
+    "source_file": "OISDCS2025-26EP14.pdf",
+    "title": "Fatal accident caused by tubing drop after the elevator was unlatched at the monkey board",
+    "actual_outcome": "Fatality of the Night Tool Pusher operating the driller console, Critical injury to a Rig- man",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-019": {
+    "source_file": "OISDCS2025-26EP18.pdf",
+    "title": "Man Overboard (MOB).",
+    "actual_outcome": "Loss of life (Missing).",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-020": {
+    "source_file": "OISDCS2025-26EP19.pdf",
+    "title": "OISDCS2025-26EP19",
+    "actual_outcome": "Fatal Accident",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
       "LINE_OF_FIRE",
       "SAFE_MECHANICAL_LIFTING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
+    ]
   },
-  {
-    "report_id": "DEMO-03",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
+  "CASE-021": {
+    "source_file": "OISDCS2025-26EP21.pdf",
+    "title": "Gas blowout incident at Workover Rig",
+    "actual_outcome": "Blowout.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "ENERGY_ISOLATION",
       "CONFINED_SPACE"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
+    ]
   },
-  {
-    "report_id": "DEMO-04",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "DEMO-05",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "WORKING_AT_HEIGHT"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "DEMO-06",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "WORK_AUTHORISATION",
+  "CASE-022": {
+    "source_file": "OISDCS2025-26LPG12 (1).pdf",
+    "title": "Fatal accident due to electrical shock",
+    "actual_outcome": "One Fatality.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
       "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "FAILED"
+    ]
   },
-  {
-    "report_id": "DEMO-07",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "BYPASSED"
+  "CASE-023": {
+    "source_file": "OISDCS2025-26MOLPG22.pdf",
+    "title": "Major accident while operating service water valve for topping up of soap solution tray used for lubricating conveyor chain.",
+    "actual_outcome": "Amputation of contract worker’s right hand below elbow.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
   },
-  {
-    "report_id": "DEMO-08",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
+  "CASE-024": {
+    "source_file": "OISDCS2025-26PE17.pdf",
+    "title": "Fire in 2’’ hydrocarbon drain line.",
+    "actual_outcome": "Unit outage & production loss, damage of instrument detectors and cables.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "ENERGY_ISOLATION",
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-025": {
+    "source_file": "OISDCS2025-26PL15.pdf",
+    "title": "Gas leakage & Fire incident in Offshore section (near river mouth) of a Trunk Pipeline originating from Offshore Processing complex.",
+    "actual_outcome": "Gas & Condensate",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "CONFINED_SPACE",
+      "HOT_WORK"
+    ]
+  },
+  "CASE-026": {
+    "source_file": "OISDCS2025-26PL16.pdf",
+    "title": "Pipeline failure incidents due to heavy rainfall/ flash floods during Monsoon season 2025.",
+    "actual_outcome": "Loss of petroleum product/ gas due to snapping of pipelines. Additionally, pipeline replacement costs and throughput loss are also incurred by pipeline operator.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-027": {
+    "source_file": "OISDCS2026-27EP01.pdf",
+    "title": "Blowout after well perforation.",
+    "actual_outcome": "Blowout.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-028": {
+    "source_file": "OISDCS2026-27EP02.pdf",
+    "title": "Fall of travelling block.",
+    "actual_outcome": "Financial loss.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-029": {
+    "source_file": "OISDCS2026-27EP03.pdf",
+    "title": "A minor fire incident at well site.",
+    "actual_outcome": "Reported Industrial Case Study",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-030": {
+    "source_file": "OISDCS2026-27EP05.pdf",
+    "title": "Fatal Fall Involving Psychological Distress",
+    "actual_outcome": "Fatal injury.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-031": {
+    "source_file": "OISDCS2026-27EP06.pdf",
+    "title": "HVAC fire in machinery deck.",
+    "actual_outcome": "Financial loss.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "HOT_WORK"
+    ]
+  },
+  "CASE-032": {
+    "source_file": "OISDCS2026-27EP09.pdf",
+    "title": "Major incident at a GGS.",
+    "actual_outcome": "Loss of vision of a Contractual worker.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "ENERGY_ISOLATION",
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-033": {
+    "source_file": "OISDCS2026-27PE08.pdf",
+    "title": "Fire Incident in Crude and Vacuum Distillation Unit (CDU/VDU)",
+    "actual_outcome": "Property Damage",
+    "sif_confirmed": false,
+    "actual_severity": "NONE",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
+  },
+  "CASE-034": {
+    "source_file": "OISDCS2026-27PE10.pdf",
+    "title": "Fatal flash fire during opening of an isolated desalter manway (CDU)",
+    "actual_outcome": "Fatal injury",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "CONFINED_SPACE",
+      "HOT_WORK",
+      "WORKING_AT_HEIGHT",
       "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
+    ]
   },
-  {
-    "report_id": "DEMO-09",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
+  "CASE-035": {
+    "source_file": "OISDCSEP11.pdf",
+    "title": "Fall & damage of workover rig mast.",
+    "actual_outcome": "Loss of rig mast-downtime/ Fatal Injury.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION",
+      "LINE_OF_FIRE"
+    ]
   },
-  {
-    "report_id": "DEMO-10",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "DEMO-11",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "DEMO-12",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "UNVERIFIED"
-  },
-  {
-    "report_id": "DEMO-13",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "DEMO-14",
-    "sif_potential_label": "INSUFFICIENT_EVIDENCE",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "UNVERIFIED"
-  },
-  {
-    "report_id": "DEMO-15",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "DEMO-16",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
+  "CASE-036": {
+    "source_file": "OISDE&P17.pdf",
+    "title": "Fire in 2’’ hydrocarbon drain line.",
+    "actual_outcome": "Unit outage & production loss, damage of instrument detectors and cables.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "ENERGY_ISOLATION",
       "CONFINED_SPACE"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "DEGRADED"
+    ]
   },
-  {
-    "report_id": "DEMO-17",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
+  "CASE-037": {
+    "source_file": "OISDPL04.pdf",
+    "title": "Incident of piercing & leakage from LPG pipeline, while drilling for soil investigation survey for other pipeline in common ROU.",
+    "actual_outcome": "Leakage from LPG pipeline.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
   },
-  {
-    "report_id": "DEMO-18",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
+  "CASE-038": {
+    "source_file": "case study archived 39.pdf",
+    "title": "Fire incident during maintenance activity.",
+    "actual_outcome": "INR 85 lacs",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "LINE_OF_FIRE",
       "SAFE_MECHANICAL_LIFTING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0019",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
+  "CASE-039": {
+    "source_file": "case study archived1.pdf",
+    "title": "Fire incident on Maintenance Vessel used for SPM maintenance.",
+    "actual_outcome": "Fire took place on Maintenance Vessel and the incident resulted in four fatalities.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "CONFINED_SPACE"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0020",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
+  "CASE-040": {
+    "source_file": "case study archived11.pdf",
+    "title": "Man overboard (MOB).",
+    "actual_outcome": "Loss of life (Missing).",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0021",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
+  "CASE-041": {
+    "source_file": "case study archived12.pdf",
+    "title": "Major fire incident at cluster location.",
+    "actual_outcome": "Major loss of Asset.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "ENERGY_ISOLATION",
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-042": {
+    "source_file": "case study archived16.pdf",
+    "title": "Accident during maintenance activity",
+    "actual_outcome": "Burn injury to fourteen persons.",
+    "sif_confirmed": true,
+    "actual_severity": "INJURY",
+    "primary_rules": [
+      "LINE_OF_FIRE",
+      "SAFE_MECHANICAL_LIFTING"
+    ]
+  },
+  "CASE-043": {
+    "source_file": "case study archived17.pdf",
+    "title": "Fatal accident during adsorbent removal.",
+    "actual_outcome": "2 fatalities.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-044": {
+    "source_file": "case study archived19 (1).pdf",
+    "title": "Pipeline failure incident in River crossing.",
+    "actual_outcome": "Inventory loss and shutdown.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-045": {
+    "source_file": "case study archived19.pdf",
+    "title": "Pipeline failure incident in River crossing.",
+    "actual_outcome": "Inventory loss and shutdown.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-046": {
+    "source_file": "case study archived2.pdf",
+    "title": "Fall of the Hatch on a Roustabout.",
+    "actual_outcome": "Fatal Injury.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "LINE_OF_FIRE",
+      "SAFE_MECHANICAL_LIFTING"
+    ]
+  },
+  "CASE-047": {
+    "source_file": "case study archived20.pdf",
+    "title": "Fatal Accident at Wellsite",
+    "actual_outcome": "One fatality and four injuries",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION",
+      "CONFINED_SPACE"
+    ]
+  },
+  "CASE-048": {
+    "source_file": "case study archived3.pdf",
+    "title": "Fall of The Telescopic Mast",
+    "actual_outcome": "Major Loss of Asset",
+    "sif_confirmed": true,
+    "actual_severity": "INJURY",
+    "primary_rules": [
       "WORKING_AT_HEIGHT"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0022",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "LINE_OF_FIRE"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
+  "CASE-049": {
+    "source_file": "case study archived31.pdf",
+    "title": "Fall & damage of drilling rig mast.",
+    "actual_outcome": "Financial Loss.",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
+      "HOT_WORK"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0023",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0024",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
+  "CASE-050": {
+    "source_file": "case study archived32.pdf",
+    "title": "Fire in a Battery Room",
+    "actual_outcome": "Fire damage to battery room and nearby areas",
+    "sif_confirmed": "needs human label",
+    "actual_severity": "UNKNOWN",
+    "primary_rules": [
       "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "UNVERIFIED"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0025",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
+  "CASE-051": {
+    "source_file": "case study archived34.pdf",
+    "title": "case study archived34",
+    "actual_outcome": "Two (2) nos. of fatality. (B) DETAILS OF INCIDENT : Location wanted to convert the two A/G (above ground) horizontal tanks of 70 KL cap. each 3m dia. x 11m length from Ethanol to Slop service. An A/G sump tank, also referred as OWS is located very close to the tank dyke. A HWP was issued to the contractor for the modification of common inlet header of Ethanol tanks for the said conversion. Accordingly, six contract workmen arrived at the worksite two Oxygen cylinders, one LPG cylinder, few pipe sections, elbows, welding rectifier machine, welding electrodes, grinding machine, Gas cutting torch, torch ignition lighter, face shield mask, electrical JB, a bunch of electrical cable and some other material. Flanges on the common Ethanol Inlet header of both the tanks were opened. Two buckets were kept under these open flanges for the collection and disposal of Pipeline content in the adjoining A/G sump tank. Workers also tried to open the nut bolts of the upstream flange joint of the inlet MOV of one of the tank but it could not be opened as the same were rusted. They opened the downstream flange of the same MOV. Further, this inlet MOV was also Half Opened. This might have been done to empty out the balance Ethanol from the tank before opening the flanges. For the 2nd tank, workers opened the upstream flange joint of its inlet MOV. This MOV was kept closed. This tank had approx. 20KL Ethanol. Two loud explosions occurred on these tanks along with fire as seen in the CCTV footage. One of the contract worker suffered severe burn injuries and could not come out of the work spot. He was declared brought dead when he was taken to the hospital. Another worker could escape from the affected area. He ran towards main gate of the Installation and was immediately rushed to hospital for treatment. He had suffered approx. 40% to 50% burn injuries. Subsequently, he succumbed to the burn injuries after one month of the incident. Terminal team reached the incident site within 3 to 3.5 min. and started fire-fighting operation. Fire was extinguished within next 7 to 8 min. Total time to extinguish the fire was approx. 10 ~ 12 min. after the explosions. Provided for information purpose only. This information should be evaluated to determine if it is applicable in your operations, to avoid recurrence of such incidents. Both the Ethanol tanks after the explosion & fire. Both the end dish of left side tank flew away. Inlet dish of right side tank ruptured and fell on the dyke wall. Pipe Alley outside the dyke of Ethanol tanks Various material viz. Buket, Grinding Machine, Welding Rectifier, Elbows, Pipe section, Electrical JB, Cables etc. at Worksite. Provided for information purpose only. This information should be evaluated to determine if it is applicable in your operations, to avoid recurrence of such incidents. (C) OBSERVATIONS & LAPSES: a) Deviation from Procedure / Non availability of MOC (Management of Change) document: MOC document having the new P&ID/ Scheme / Sketch with requisite details was not prepared for this modification. Details of the work to be done and procedure to be adopted for the said conversion was not prepared. Improper planning without any discussion and understanding the requirements of the job like sequencing of various activities viz. Isolation of tanks, emptying out the dead stock and degassing of tanks was not done before carrying out the hot work. b) Non Compliance of Work Permit System : Hot work permit (HWP) with JSA was issued to the contractor”. However, following was noted from the Permit and site interaction of the Investigating team with workers and officials of OMC: • HWP was approved & issued using the SAP ID & password of Location In charge (LIC), who was on leave on the day of incident. • Tank no. of only one of the tank was mentioned on the HWP whereas the Ethanol Inlet header, which was supposed to be modified, was common for both the Ethanol tanks. • It is not clear from the permit whether the person who has requested for the issuance of permit and Receiver of the permit are the same or different. Further, there is no space for the Receiver of Permit after the issuance of permit, which is not in line with the sample format of HWP as per Annexure-I of OISD-STD- 105. c) Loose handling of Class-A product: All content of the Ethanol inlet header was drained & collected in the buckets and then the same was poured in the OWS / sump tank. This loose handling of the class-A product led to vapour accumulation at the worksite which ultimately led to fire & explosion of the tanks. d) Hydrocarbon (H/C) free tanks: Process of emptying out the Ethanol from the tanks and making it gas free was not ensured before starting the hot work at site. This led to rich & explosive mixture inside the tanks. This was also one of the main reason for the explosion and fire of the tanks. e) Lack of Supervision / Job knowledge of the Company Personnel & Contractor Supervisor : Hazard identification, Risk Assessment, Approval & Issuance of Hot Work Permit & JSA was done by the Maintenance officer, without visiting the site on the day of incident as there is no evidence of the same. He did not brief the Contractor supervisor about the hazards associated with the job and control measures to be taken at site. Toolbox talk was also not carried out. There is no record of the same. Further, JSA recommendations was also not followed by the contractor. One of the requirement of JSA i.e. LEL checking at regular intervals by the Permit Receiver was mentioned as “Yes”. However, LEL reading has been noted as “0” only once before starting the job but there is no record of the same afterwards. f) No replacement of DSO (Designated Safety Officer): DSO of the location was on planned medical leave. However, no one else at the installation was designated as DSO in his place. g) Non-functional HCDs: HCDs were nonfunctional at the time of incident due to flooding of the location. Further, it is not mentioned in the records of the Installation even though LIC and other officers were aware of the same. Proper mitigation measures not taken to neutralize the effects of non-functional HCDs. (D) PROBABLE REASONS OF FAILURE / ROOT CAUSE / CONCLUSION: a) Investigating team has concluded that in order to modify the common inlet header of the Ethanol tanks, flanges of the same were opened, pipeline content was collected in buckets and it was poured into the adjoining A/G open sump. This might have led to the accumulation and spread of Ethanol vapour at the worksite. When one of the contract workman might have attempted to ignite the gas cutting torch to cut the nuts & bolts, the accumulated vapours at the worksite immediately caught fire. This flame might have travelled up to inside the left side tank through the open inlet header and its half open Inlet MOV. Provided for information purpose only. This information should be evaluated to determine if it is applicable in your operations, to avoid recurrence of such incidents. b) Since there was a dead stock of approx. 1.4 KL in this tank and it was full of rich vapors, the flame caused explosion of the same. Intensity of the explosion was such that both dish ends of this tank were blown away approx. 24 & 30m respectively. Residue product of tank spilled in the dyke, resulting into pool fire there. c) Explosion in the first tank and fire in the dyke area might have caused heating up of adjacent tank, resulting in rise of its internal pressure and consequently its explosion & rupture. Inlet side dish of this tank fell inside the dyke area due to its rupture. (E) RECOMMENDATIONS: Following corrective actions are recommended to avoid recurrence of such / similar incidents: a) Preparation of MOC : MOC having the new P&ID/ Sketch with requisite details shall be prepared & approved for any modification & change of service of tanks prior to executing the same as per clause no. 4.i) of OISD-STD-178 Detail discussions, analysis and planning shall be done including understanding the requirements of job and sequencing of the same based on the MOC and P&ID before executing the same. b) Work Permit System : Strict adherence to work permit system as per OISD-STD-105 shall be ensured including: • Work permit shall be filled up accurately ensuring detailed and providing complete information in all sections/ sub sections in line with site conditions, risk assessment and safety requirements of the job. Sketches should be attached wherever possible to avoid any kind of miscommunication, as per clause no. 6.4.2 of OISD-STD-105. • Hazard identification and risk analysis (HIRA) of the job shall be done as per clause no. 6.1 of OISD-GDN- 206. Accordingly, a careful JSA shall be done based on the same to determine the appropriate safeguards before starting the work as per clause no. 6.3.1 of OISD-STD-105. • JSA shall also prescribe the frequency of the gas test (continuous detection using portable gas detectors or hourly or after every shift) as per clause no. 6.3.1.viii) and the same shall be complied. • No one shall share his / her SAP ID & Password with others (including LIC / Permit issuer and Receiver) for the Permit related jobs or otherwise. • Overall, Work Permit system shall be completely aligned with OISD-STD-105 including the format of HWP as per Annexure-I of OISD-STD-105. c) Loose handling of the Product: It shall never be done at any installation or any worksite. d) Hydrocarbon (H/C) free tanks: Tanks & worksite shall be made gas-free or positive isolation of the same shall be ensured before carrying out any hot work at the installations. e) Effective Supervision of works including Toolbox talks: Toolbox talk coupled with proper supervision shall be ensured depending on the nature of work as per clause no. 6.3.3. of OISD-STD-105. The work shall not be allowed without proper supervision. f) Deployment of alternate DSO: Alternate DSO shall be given the charge in case of non-availability of regular DSO due to his leave or other official engagements. g) Hydrocarbon Detectors (HCDs) : Periodic checking of Safety Critical Equipment (SCE) e.g. PSVs, ESDs, HCDs etc. and their healthiness should be ensured and documented. Any deviation/ non availability/ impairment should be duly logged, approved and communicated to all concerned with alternate mitigation measures/ course of action as per clause no. 7.6.8.c) of OISD-GDN-206. SCE which are not available/ by pass should be marked in field also. ==============================X===================================",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "CONFINED_SPACE",
+      "HOT_WORK"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0026",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0027",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0028",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0029",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0030",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0031",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "LINE_OF_FIRE"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0032",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0033",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
+  "CASE-052": {
+    "source_file": "case study archived35.pdf",
+    "title": "Fatal accident during adsorbent removal.",
+    "actual_outcome": "2 fatalities.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
       "CONFINED_SPACE"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0034",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
+  "CASE-053": {
+    "source_file": "case study archived37.pdf",
+    "title": "Fatal accident by hook-loaded FARANA crane.",
+    "actual_outcome": "Fatality of a contract worker.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "LINE_OF_FIRE",
+      "SAFE_MECHANICAL_LIFTING"
+    ]
+  },
+  "CASE-054": {
+    "source_file": "case study archived38.pdf",
+    "title": "Fatal accident due to fall from height.",
+    "actual_outcome": "One fatality.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
       "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "UNVERIFIED"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0035",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "LINE_OF_FIRE"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0036",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0037",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0038",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
+  "CASE-055": {
+    "source_file": "case study archived4.pdf",
+    "title": "Accident during calibration of SRV",
+    "actual_outcome": "Loss of Life",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
       "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "UNVERIFIED"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0039",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
-  },
-  {
-    "report_id": "OIL-SYN-0040",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0041",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0042",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0043",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0044",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0045",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0046",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0047",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0048",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0049",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0050",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0051",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "LINE_OF_FIRE"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0052",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0053",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "WORKING_AT_HEIGHT"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0054",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0055",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "WORKING_AT_HEIGHT"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0056",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0057",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "CONFINED_SPACE"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0058",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "LINE_OF_FIRE"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0059",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0060",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0061",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
-  },
-  {
-    "report_id": "OIL-SYN-0062",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0063",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0064",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0065",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
+  "CASE-056": {
+    "source_file": "case study archived40.pdf",
+    "title": "Fatal incident in Pipeline ROW during excavation for TLP cable repair.",
+    "actual_outcome": "One Fatality.",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
       "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "UNVERIFIED"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0066",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0067",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0068",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0069",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0070",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0071",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0072",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0073",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0074",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0075",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0076",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0077",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0078",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "FAILED"
-  },
-  {
-    "report_id": "OIL-SYN-0079",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "FAILED"
-  },
-  {
-    "report_id": "OIL-SYN-0080",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0081",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0082",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0083",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0084",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
-  },
-  {
-    "report_id": "OIL-SYN-0085",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0086",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0087",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "LINE_OF_FIRE"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0088",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0089",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0090",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0091",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0092",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0093",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0094",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0095",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "CONFINED_SPACE"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0096",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0097",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0098",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0099",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0100",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0101",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0102",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0103",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0104",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0105",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0106",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0107",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0108",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0109",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0110",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "WORKING_AT_HEIGHT"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0111",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0112",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
+  "CASE-057": {
+    "source_file": "case study archived5.pdf",
+    "title": "Fall of The Travelling Block",
+    "actual_outcome": "Loss of life and equipment damage",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
       "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "UNVERIFIED"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0113",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
+  "CASE-058": {
+    "source_file": "case study archived7.pdf",
+    "title": "Fatal incident during degassing process of 150 MT capacity above ground LPG storage bullet",
+    "actual_outcome": "Two fatalities",
+    "sif_confirmed": true,
+    "actual_severity": "FATALITY",
+    "primary_rules": [
+      "ENERGY_ISOLATION",
+      "CONFINED_SPACE"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0114",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0115",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0116",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0117",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0118",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0119",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0120",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0121",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0122",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0123",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0124",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0125",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0126",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0127",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
-  },
-  {
-    "report_id": "OIL-SYN-0128",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0129",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0130",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
+  "CASE-059": {
+    "source_file": "case study archived8.pdf",
+    "title": "Fire incident in Crude Distillation Unit due to SR line leak.",
+    "actual_outcome": "Fire & Explosion, Unit outage & production loss, damage of equipment & property.",
+    "sif_confirmed": true,
+    "actual_severity": "INJURY",
+    "primary_rules": [
       "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "UNVERIFIED"
+    ]
   },
-  {
-    "report_id": "OIL-SYN-0131",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0132",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0133",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0134",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0135",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0136",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0137",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "CONFINED_SPACE"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0138",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0139",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0140",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0141",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0142",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0143",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
-  },
-  {
-    "report_id": "OIL-SYN-0144",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0145",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0146",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0147",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0148",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0149",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0150",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0151",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0152",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0153",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0154",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0155",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0156",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
-  },
-  {
-    "report_id": "OIL-SYN-0157",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0158",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
-  },
-  {
-    "report_id": "OIL-SYN-0159",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
-  },
-  {
-    "report_id": "OIL-SYN-0160",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0161",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0162",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0163",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0164",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0165",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
+  "CASE-060": {
+    "source_file": "case study archived9.pdf",
+    "title": "Explosion in Furnace box.",
+    "actual_outcome": "Hydrocarbon Explosion, Unit outage & production loss, damage of equipment & property.",
+    "sif_confirmed": false,
+    "actual_severity": "NONE",
+    "primary_rules": [
       "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "UNVERIFIED"
-  },
-  {
-    "report_id": "OIL-SYN-0166",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0167",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "FAILED"
-  },
-  {
-    "report_id": "OIL-SYN-0168",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0169",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0170",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0171",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0172",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0173",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0174",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0175",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0176",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0177",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0178",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0179",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "LINE_OF_FIRE"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0180",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0181",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0182",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "LINE_OF_FIRE"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0183",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0184",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0185",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0186",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0187",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0188",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0189",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0190",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0191",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0192",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
-      "WORKING_AT_HEIGHT"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0193",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0194",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0195",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0196",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0197",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "LINE_OF_FIRE"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0198",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0199",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0200",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0201",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0202",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "LINE_OF_FIRE"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0203",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "ENERGY_ISOLATION"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "UNVERIFIED"
-  },
-  {
-    "report_id": "OIL-SYN-0204",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0205",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0206",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0207",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0208",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0209",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0210",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0211",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0212",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0213",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0214",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
-  },
-  {
-    "report_id": "OIL-SYN-0215",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0216",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "SAFE_MECHANICAL_LIFTING",
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0217",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0218",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0219",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0220",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "CONFINED_SPACE"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0221",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0222",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0223",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0224",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0225",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0226",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
-      "CONFINED_SPACE"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0227",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0228",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "FAILED"
-  },
-  {
-    "report_id": "OIL-SYN-0229",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0230",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
-      "CONFINED_SPACE"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0231",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0232",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "FAILED"
-  },
-  {
-    "report_id": "OIL-SYN-0233",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0234",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0235",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0236",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "HOT_WORK"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0237",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0238",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "FAILED"
-  },
-  {
-    "report_id": "OIL-SYN-0239",
-    "sif_potential_label": "MEDIUM",
-    "life_saving_rule": [
-      "CONFINED_SPACE"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "MISSING"
-  },
-  {
-    "report_id": "OIL-SYN-0240",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0241",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0242",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0243",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "VERIFIED_INTACT"
-  },
-  {
-    "report_id": "OIL-SYN-0244",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
-  },
-  {
-    "report_id": "OIL-SYN-0245",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0246",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0247",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "WEAK"
-  },
-  {
-    "report_id": "OIL-SYN-0248",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0249",
-    "sif_potential_label": "LOW",
-    "life_saving_rule": [
-      "DRIVING"
-    ],
-    "process_safety_relevant": false,
-    "barrier_failure_type": "DEGRADED"
-  },
-  {
-    "report_id": "OIL-SYN-0250",
-    "sif_potential_label": "HIGH",
-    "life_saving_rule": [
-      "BYPASSING_SAFETY_CONTROLS"
-    ],
-    "process_safety_relevant": true,
-    "barrier_failure_type": "BYPASSED"
+    ]
   }
-]
+}

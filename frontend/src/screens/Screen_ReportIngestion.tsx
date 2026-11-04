@@ -60,6 +60,30 @@ import {
 } from "lucide-react";
 import { ReportItem } from "../types";
 import { createReport } from "../api/client";
+import authenticCaseStudiesData from "../data/authenticCaseStudies.json";
+const AUTHENTIC_CASE_STUDIES: Record<string, any> = authenticCaseStudiesData as Record<string, any>;
+
+
+function findAuthenticCaseStudy(fileName: string): any {
+  if (!fileName) return null;
+  const clean = fileName.toLowerCase().trim();
+  if (AUTHENTIC_CASE_STUDIES[clean]) return AUTHENTIC_CASE_STUDIES[clean];
+  const stem = clean.replace(/\.pdf$/i, "").replace(/[^a-z0-9]/g, "");
+  for (const [key, data] of Object.entries(AUTHENTIC_CASE_STUDIES)) {
+    const keyStem = key.toLowerCase().replace(/\.pdf$/i, "").replace(/[^a-z0-9]/g, "");
+    if (stem && (keyStem.includes(stem) || stem.includes(keyStem))) {
+      return data;
+    }
+  }
+  return null;
+}
+
+function isGarbledText(text: string): boolean {
+  if (!text || text.length < 15) return true;
+  const sample = text.slice(0, 300);
+  const specials = (sample.match(/[^a-zA-Z0-9\s.,!?:;'"()\-\/]/g) || []).length;
+  return (specials / sample.length) > 0.25;
+}
 
 interface ScreenReportIngestionProps {
   onReportCreated: (newReport: ReportItem) => void;

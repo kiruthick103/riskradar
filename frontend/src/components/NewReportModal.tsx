@@ -33,19 +33,17 @@ export const NewReportModal: React.FC<NewReportModalProps> = ({
     if (!narrativeText.trim()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      onSubmit({
-        site,
-        activity,
-        report_type: reportType,
-        report_date: reportDate,
-        narrative_text: narrativeText,
-        contractor_involved: contractorInvolved,
-        actual_severity: actualSeverity
-      });
-      setIsSubmitting(false);
-      onClose();
-    }, 400);
+    onSubmit({
+      site,
+      activity,
+      report_type: reportType,
+      report_date: reportDate,
+      narrative_text: narrativeText,
+      contractor_involved: contractorInvolved,
+      actual_severity: actualSeverity
+    });
+    setIsSubmitting(false);
+    onClose();
   };
 
   const loadExample = (type: string) => {

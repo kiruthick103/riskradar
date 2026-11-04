@@ -80,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {getScreenTitle(activeScreen)}
           </h2>
           <span className="text-xs px-2 py-0.5 rounded-md bg-slate-100 text-slate-500 font-mono font-bold">
-            PS 26165 ? Team NorthStar
+            PS 26165 · Team NorthStar
           </span>
         </div>
 
@@ -189,9 +189,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                   ? "bg-white text-purple-900 shadow-2xs font-black"
                   : "text-slate-500 hover:text-slate-900"
               }`}
-              title="?????? ??? ?????"
+              title="हिन्दी में बदलें"
             >
-              <span>??????</span>
+              <span>हिन्दी</span>
             </button>
 
             {/* 3-dot Dropdown */}
@@ -218,7 +218,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {isLangMenuOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-slate-200 p-1.5 z-50">
                   <div className="text-[10px] font-bold text-slate-400 px-3 py-1 uppercase tracking-wider">
-                    Indian Languages (?????? ??????)
+                    Indian Languages (भारतीय भाषाएं)
                   </div>
                   <div className="space-y-0.5">
                     {DROPDOWN_LANGUAGES.map((lang) => (

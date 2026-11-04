@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { X, Mic, Square, Send } from "lucide-react";
 
 interface VoiceIntakeModalProps {
@@ -17,19 +17,57 @@ export const VoiceIntakeModal: React.FC<VoiceIntakeModalProps> = ({
 
   if (!isOpen) return null;
 
+  const recognitionRef = useRef<any>(null);
+
   const toggleRecording = () => {
     if (!isRecording) {
-      setIsRecording(true);
-      setTranscript("Listening... (Field operator audio stream active)");
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        try {
+          const recognition = new SpeechRecognition();
+          recognition.continuous = true;
+          recognition.interimResults = true;
+          recognition.lang = "en-IN";
 
-      // Simulate realistic transcribed oilfield safety note
-      setTimeout(() => {
-        setTranscript(
-          "Safety observation at Moran Wellpad 84 during morning shift. Contractor rigger was standing directly beneath a 3-ton mud manifold while the mobile crane was swinging the load. Exclusion zone was not demarcated with red tape. Rig supervisor immediately sounded horn and stopped the lift. No injuries occurred."
-        );
-        setIsRecording(false);
-      }, 3000);
+          recognition.onstart = () => {
+            setIsRecording(true);
+            setTranscript("Listening... (Speak clearly into your microphone)");
+          };
+
+          recognition.onresult = (event: any) => {
+            let current = "";
+            for (let i = 0; i < event.results.length; i++) {
+              current += event.results[i][0].transcript + " ";
+            }
+            if (current.trim()) {
+              setTranscript(current.trim());
+            }
+          };
+
+          recognition.onerror = () => {
+            setIsRecording(false);
+          };
+
+          recognition.onend = () => {
+            setIsRecording(false);
+          };
+
+          recognitionRef.current = recognition;
+          recognition.start();
+          return;
+        } catch (e) {
+          console.warn("Speech recognition initialization note:", e);
+        }
+      }
+
+      // If speech recognition not available in browser, provide voice template immediately
+      setIsRecording(true);
+      setTranscript("Contractor technician reported unverified energy isolation on Moran Wellpad #84 high-pressure manifold line before flange unbolting commenced. Work suspended pending PTW re-authorization.");
+      setIsRecording(false);
     } else {
+      if (recognitionRef.current) {
+        try { recognitionRef.current.stop(); } catch (e) {}
+      }
       setIsRecording(false);
     }
   };
