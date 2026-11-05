@@ -105,8 +105,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
     { id: 8, label: t("nav.activity"), icon: Activity },
     { id: 9, label: t("nav.barrier"), icon: Layers },
     { id: 10, label: t("nav.telemetry"), icon: Radio },
-    { id: 11, label: t("nav.rca"), icon: FileCheck2 },
-    { id: 13, label: "Model Evaluation (F2)", icon: BarChart2 }
+    { id: 11, label: t("nav.rca"), icon: FileCheck2 }
   ];
 
   return (

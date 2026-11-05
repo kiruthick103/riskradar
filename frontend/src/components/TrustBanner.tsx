@@ -38,14 +38,7 @@ export const TrustBanner: React.FC<TrustBannerProps> = ({
             Dataset: <span className="text-slate-300">Synthetic Prototype Data (N=250)</span>
           </span>
 
-          {onOpenEvaluation && (
-            <button
-              onClick={onOpenEvaluation}
-              className="text-cyan-400 hover:text-cyan-300 underline font-medium cursor-pointer transition"
-            >
-              View Model Evaluation & F2 Metric ?
-            </button>
-          )}
+          
         </div>
       </div>
     </div>

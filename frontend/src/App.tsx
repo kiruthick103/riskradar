@@ -24,7 +24,6 @@ import { Screen10_SafetyTelemetry } from "./screens/Screen10_SafetyTelemetry";
 import { Screen11_InvestigationRCA } from "./screens/Screen11_InvestigationRCA";
 import { TrustBanner } from "./components/TrustBanner";
 import { AIAssistantDrawer } from "./components/AIAssistantDrawer";
-import { Screen13_ModelEvaluation } from "./screens/Screen13_ModelEvaluation";
 
 
 import { fetchReports, fetchExecutiveOverview, createReport, submitReportReview, fetchRealtimeStats } from "./api/client";

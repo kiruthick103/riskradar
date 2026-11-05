@@ -64,7 +64,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       case 10: return t("nav.telemetry");
       case 11: return t("nav.rca");
       case 12: return t("nav.detail");
-      case 13: return "Model Evaluation & F2 Metric";
       default: return t("nav.dashboard");
     }
   };
@@ -97,22 +96,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Bot className="w-3.5 h-3.5" />
               <span>AI Safety Assistant</span>
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-            </button>
-          )}
-
-          {/* Model Evaluation Link Button */}
-          {setActiveScreen && (
-            <button
-              type="button"
-              onClick={() => setActiveScreen(13)}
-              className={`px-3 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 border transition cursor-pointer ${
-                activeScreen === 13
-                  ? "bg-slate-900 text-white border-slate-900 shadow-xs"
-                  : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"
-              }`}
-            >
-              <BarChart2 className="w-3.5 h-3.5 text-cyan-500" />
-              <span>Evaluation (F2)</span>
             </button>
           )}
 
