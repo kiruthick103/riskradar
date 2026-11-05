@@ -1,0 +1,35 @@
+{
+  "total_examples": 1240,
+  "split_counts": {
+    "train": 848,
+    "val": 184,
+    "test": 208
+  },
+  "proportions": {
+    "train": 0.684,
+    "val": 0.148,
+    "test": 0.168
+  },
+  "source_breakdown": {
+    "authentic_cases": 60,
+    "synthetic_reports": 250,
+    "augmented_variants": 930
+  },
+  "schema_keys": [
+    "report_type",
+    "activity",
+    "hazard",
+    "energy_type",
+    "energy_level",
+    "exposure_present",
+    "proximity",
+    "barrier",
+    "barrier_status",
+    "potential_consequence",
+    "life_saving_rules",
+    "process_safety_relevant",
+    "extraction_confidence",
+    "missing_info",
+    "contradiction"
+  ]
+}

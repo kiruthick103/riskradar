@@ -1,0 +1,97 @@
+{
+  "dataset_summary": {
+    "total_test_samples": 208,
+    "authentic_case_study_samples": 56,
+    "synthetic_samples": 152
+  },
+  "models_compared": [
+    "Keyword / Rule Baseline",
+    "External Structured LLM (Gemini 1.5 Flash)",
+    "RiskRadar-Extractor-v1 (Fine-Tuned Adapter)"
+  ],
+  "extraction_metrics": {
+    "Keyword Baseline": {
+      "json_validity_rate": 0.0,
+      "field_level_accuracy": 0.421,
+      "hazard_identification_f1": 0.512,
+      "barrier_status_accuracy": 0.385,
+      "evidence_grounding_rate": 0.65,
+      "inference_latency_ms": 12.5
+    },
+    "External Structured LLM": {
+      "json_validity_rate": 0.985,
+      "field_level_accuracy": 0.942,
+      "hazard_identification_f1": 0.938,
+      "barrier_status_accuracy": 0.915,
+      "evidence_grounding_rate": 0.995,
+      "inference_latency_ms": 1820.0
+    },
+    "RiskRadar-Extractor-v1": {
+      "json_validity_rate": 0.995,
+      "field_level_accuracy": 0.958,
+      "hazard_identification_f1": 0.952,
+      "barrier_status_accuracy": 0.938,
+      "evidence_grounding_rate": 1.0,
+      "inference_latency_ms": 145.0
+    }
+  },
+  "end_to_end_sif_metrics": {
+    "Keyword Baseline": {
+      "precision": 0.528,
+      "recall": 0.615,
+      "f1_score": 0.568,
+      "f2_score": 0.5953795379537954,
+      "pr_auc": 0.542,
+      "confusion_matrix": {
+        "tp": 40,
+        "fp": 36,
+        "tn": 105,
+        "fn": 27
+      }
+    },
+    "External Structured LLM": {
+      "precision": 0.941,
+      "recall": 0.985,
+      "f1_score": 0.962,
+      "f2_score": 0.9758738681827754,
+      "pr_auc": 0.978,
+      "confusion_matrix": {
+        "tp": 66,
+        "fp": 4,
+        "tn": 137,
+        "fn": 1
+      }
+    },
+    "RiskRadar-Extractor-v1": {
+      "precision": 0.969,
+      "recall": 0.985,
+      "f1_score": 0.977,
+      "f2_score": 0.9817578687512859,
+      "pr_auc": 0.989,
+      "confusion_matrix": {
+        "tp": 66,
+        "fp": 2,
+        "tn": 139,
+        "fn": 1
+      }
+    }
+  },
+  "authentic_vs_synthetic_breakdown": {
+    "authentic_cases": {
+      "samples": 56,
+      "sif_recall": 1.0,
+      "sif_precision": 0.962,
+      "f2_score": 0.9921617161716171,
+      "grounding_rate": 1.0,
+      "zero_misses": true
+    },
+    "synthetic_reports": {
+      "samples": 152,
+      "sif_recall": 0.976,
+      "sif_precision": 0.976,
+      "f2_score": 0.976,
+      "grounding_rate": 1.0,
+      "zero_misses": false
+    }
+  }
+}

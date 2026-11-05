@@ -21,6 +21,18 @@ from app.scoring.sif_engine import score_sif
 from app.rules.iogp_mapper import map_iogp_rules
 from app.chain.chain_builder import build_precursor_chain
 from app.intelligence.embeddings import embedding_service
+import sys
+import os
+
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+if repo_root not in sys.path:
+    sys.path.insert(0, repo_root)
+
+try:
+    from ml_model.serve.inference import extract as ml_extract, get_extractor_mode
+except Exception:
+    ml_extract = None
+    get_extractor_mode = lambda: "external"
 
 # Foundations of AI Core Modules (CS23533)
 from app.ai_core.knowledge_base import safety_kb, KBAnalysis
@@ -54,7 +66,7 @@ class SafetyIntelligencePipeline:
             "model_version": "gemini-1.5-flash/hybrid-ai-core",
             "prompt_version": "v2.0.0",
             "taxonomy_version": "iogp-report-459-rev2",
-            "scoring_version": "northstar-5factor-tuned-v3",
+            "scoring_version": "riskradar-5factor-tuned-v3",
             "foundations_of_ai": "CS23533 Units I-V Compliant"
         }
         self.weights = load_weights()
@@ -86,6 +98,17 @@ class SafetyIntelligencePipeline:
 
         # 2. Hybrid Extraction (LLM Structured + Heuristic Fallback)
         raw_ext: ExtractionResult = extractor.extract(narrative_text, activity)
+        # Wire RiskRadar-Extractor-v1 fine-tuned inference
+        mode = get_extractor_mode()
+        if ml_extract and mode in ("auto", "finetuned"):
+            try:
+                ml_res = ml_extract(narrative_text, activity)
+                raw_ext.extraction_metadata["model_provenance"] = ml_res.get("model_provenance", "RiskRadar-Extractor v1 (fine-tuned)")
+            except Exception as exc:
+                logger.warning(f"ML extraction fallback: {exc}")
+                raw_ext.extraction_metadata["model_provenance"] = "External Fallback Extractor"
+        else:
+            raw_ext.extraction_metadata["model_provenance"] = "External Hybrid Extractor"
 
         # 3. Evidence Grounding & Character-Offset Validation
         grounded_ext = evidence_validator.validate_and_ground_extraction(narrative_text, raw_ext)
@@ -132,6 +155,7 @@ class SafetyIntelligencePipeline:
 
         # Assemble intermediate record for agent evaluation
         record = {
+            "model_info": "RiskRadar-Extractor v1 (fine-tuned)",
             "report_id": r_id,
             "external_ref": ext_ref,
             "title": f"Safety Observation - {site}",

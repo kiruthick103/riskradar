@@ -1,0 +1,6 @@
+{
+  "model_max_length": 2048,
+  "padding_side": "right",
+  "use_fast": true,
+  "chat_template": "{% for m in messages %}{{ m.role + ': ' + m.content + '\n\n' }}{% endfor %}"
+}

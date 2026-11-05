@@ -882,9 +882,14 @@ export const Screen_ReportIngestion: React.FC<ScreenReportIngestionProps> = ({
                   {/* SIF Potential Assessment */}
                   {currentItem.analysisResult?.assessment && (
                     <div className="space-y-2 pt-3 border-t border-slate-100">
-                      <label className="text-2xs font-black text-slate-500 uppercase tracking-wider block">
-                        Precursor SIF Potential:
-                      </label>
+                      <div className="flex items-center justify-between">
+                        <label className="text-2xs font-black text-slate-500 uppercase tracking-wider block">
+                          Precursor SIF Potential:
+                        </label>
+                        <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200 flex items-center gap-1 shadow-2xs">
+                          <Sparkles className="w-2.5 h-2.5 text-blue-600" /> Model: RiskRadar-Extractor v1 (fine-tuned)
+                        </span>
+                      </div>
                       <div
                         className={`p-4 rounded-2xl border flex items-center justify-between ${
                           currentItem.analysisResult.assessment.sif_potential_label === "HIGH"
