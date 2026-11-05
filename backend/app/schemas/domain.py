@@ -43,7 +43,7 @@ class ReviewDecision(str, Enum):
 class ReportCreateRequest(BaseModel):
     external_ref: Optional[str] = None
     report_type: ReportType
-    report_date: str
+    report_date: Optional[str] = None
     site: str
     activity: str
     narrative_text: str

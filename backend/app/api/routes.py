@@ -56,7 +56,7 @@ def create_report(report_in: ReportCreateRequest):
         narrative_text=report_in.narrative_text,
         site=report_in.site,
         activity=report_in.activity,
-        report_date=report_in.report_date,
+        report_date=report_in.report_date or datetime.now().strftime("%Y-%m-%d"),
         report_type=report_in.report_type.value if hasattr(report_in.report_type, "value") else str(report_in.report_type),
         actual_severity=report_in.actual_severity.value if hasattr(report_in.actual_severity, "value") else str(report_in.actual_severity),
         contractor_involved=report_in.contractor_involved or False,
